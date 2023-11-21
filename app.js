@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 
 const dbConnection = require('./config/database');
 const authRoutes = require('./routes/auth');
+const categoryRoutes = require('./routes/category');
 
 dotenv.config({ path: 'config.env' });
 
@@ -18,11 +19,16 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use(authRoutes);
+app.use(categoryRoutes);
 
 app.use((error, req, res, next) => {
-  res.status(error.statusCode || 500).json({
-    message: error.message,
-    data: error.data
+  const statusCode = error.statusCode || 500;
+  const message = error.message || 'Internal Server Error';
+  const data = error.data || [];
+
+  res.status(statusCode).json({
+    message: message,
+    data: data
   });
 });
 

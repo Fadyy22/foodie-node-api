@@ -8,8 +8,9 @@
     - [User Endpoints](#user-endpoints)
         - [Signup](#signup)
         - [Login](#login)
-    - [Recipe Endpoints](#recipe-endpoints)
-
+    - [Category Endpoints](#category-endpoints)
+        - [Get All Categories](#get-all-categories)
+        - [Create Category](#create-category)
 ---
 ## Introduction
 This is the API for the Forkify application. It is built using Node.js, Express.js, and MongoDB.
@@ -59,4 +60,28 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `token`: String
 
 
-### Recipe Endpoints
+### Category Endpoints
+
+#### Get All Categories
+- **URL:** `/categories`
+- **Method:** `GET`
+- **Description:** Gets all categories.
+- **Response Body:**
+    - `categories`: Array of objects
+        - `id`: String
+        - `name`: String
+        - `description`: String
+
+#### Create Category
+- **URL:** `/categories`
+- **Method:** `POST`
+- **Description:** Creates a new category.
+- **Request Body:**
+    - `name`: String
+    - `description`: String
+- **Response Body:**
+    - `message`: String
+    - `category`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String

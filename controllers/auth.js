@@ -1,4 +1,4 @@
-const asynchandler = require('express-async-handler');
+const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
@@ -6,7 +6,7 @@ const { validationResult } = require('express-validator');
 const errorHelper = require('../helpers/error');
 const User = require('../models/user');
 
-exports.signup = asynchandler(async (req, res, next) => {
+exports.signup = asyncHandler(async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     errorHelper('Validation failed.', 422, errors.array());
@@ -25,7 +25,7 @@ exports.signup = asynchandler(async (req, res, next) => {
   res.status(201).json({ message: 'User created!', userId: result._id });
 });
 
-exports.login = asynchandler(async (req, res, next) => {
+exports.login = asyncHandler(async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
@@ -42,7 +42,7 @@ exports.login = asynchandler(async (req, res, next) => {
   const token = jwt.sign({
     email: email,
     userId: user._id.toString()
-  }, 'ForkifyFlutterNodeJS', { expiresIn: '1h' });
+  }, 'ForkifyReactFlutterNodeJS', { expiresIn: '1h' });
 
   res.status(200).json({
     token: token,
