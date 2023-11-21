@@ -10,6 +10,7 @@
         - [Login](#login)
     - [Category Endpoints](#category-endpoints)
         - [Get All Categories](#get-all-categories)
+        - [Get Category](#get-category)
         - [Create Category](#create-category)
 ---
 ## Introduction
@@ -68,6 +69,16 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Description:** Gets all categories.
 - **Response Body:**
     - `categories`: Array of objects
+        - `id`: String
+        - `name`: String
+        - `description`: String
+
+#### Get Category
+- **URL:** `/categories?name={categoryName}`
+- **Method:** `GET`
+- **Description:** Gets a category by name.
+- **Response Body:**
+    - `category`: Array with one category object
         - `id`: String
         - `name`: String
         - `description`: String

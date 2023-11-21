@@ -4,8 +4,9 @@ const { validationResult } = require('express-validator');
 const Category = require('../models/category');
 const errorHelper = require('../helpers/error');
 
-exports.getCategory = asyncHandler(async (req, res, next) => {
-  const categories = await Category.find();
+exports.getCategories = asyncHandler(async (req, res, next) => {
+  const category = req.query.name || "";
+  const categories = await Category.find({ name: { $regex: category, $options: 'i' } });
 
   res.status(200).json({ categories: categories });
 });
