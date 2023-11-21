@@ -16,7 +16,9 @@ router.post('/signup', [
       }
     })
     .normalizeEmail(),
-  body('password').trim().isLength({ min: 8 })
+  body('password').trim().isStrongPassword({
+    minSymbols: 0
+  })
 ], authController.signup);
 
 router.post('/login', authController.login);

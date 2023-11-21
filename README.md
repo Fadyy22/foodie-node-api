@@ -28,6 +28,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 ```npm install```
 4. Create a config.env file in the root directory and add the following:
 ```Contact for the config.env file```
+5. Start the server
+```npm start```
 
 ---
 ## API Endpoints
@@ -56,6 +58,5 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `userId`: String
     - `token`: String
 
----
 
 ### Recipe Endpoints
