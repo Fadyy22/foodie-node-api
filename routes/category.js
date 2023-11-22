@@ -4,12 +4,13 @@ const express = require('express');
 
 const Category = require('../models/category');
 const categoryController = require('../controllers/category');
+const isAuth = require('../middlewares/is-auth');
 
 const router = express.Router();
 
 router.get('/categories', categoryController.getCategories);
 
-router.post('/categories', [
+router.post('/categories', isAuth, [
   body('name')
     .custom(asyncHandler(async (value, { req }) => {
       const category = await Category.findOne({ name: value });

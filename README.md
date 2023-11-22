@@ -87,6 +87,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **URL:** `/categories`
 - **Method:** `POST`
 - **Description:** Creates a new category.
+- **Request Headers:**
+    - `Authorization`: jwt token
 - **Request Body:**
     - `name`: String
     - `description`: String
