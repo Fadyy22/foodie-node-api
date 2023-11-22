@@ -17,12 +17,17 @@ exports.createCategory = asyncHandler(async (req, res, next) => {
     errorHelper('Validation failed.', 422, errors.array());
   }
 
+  if (!req.file) {
+    errorHelper('No image provided.', 422);
+  }
   const name = req.body.name;
   const description = req.body.description;
+  const image = req.file.path.replace('\\', '/');
 
   const category = new Category({
     name: name,
-    description: description
+    description: description,
+    image: image
   });
 
   await category.save();

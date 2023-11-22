@@ -1,5 +1,9 @@
+const path = require('path');
+
 const express = require('express');
 const dotenv = require('dotenv');
+const multer = require('multer');
+const { v4: uuidv4 } = require('uuid');
 
 const dbConnection = require('./config/database');
 const authRoutes = require('./routes/auth');
@@ -7,6 +11,23 @@ const categoryRoutes = require('./routes/category');
 
 dotenv.config({ path: 'config.env' });
 
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images');
+  },
+  filename: (req, file, cb) => {
+    cb(null, uuidv4() + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg'
+    || file.mimetype === 'image/jpeg') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 const app = express();
 
 app.use((req, res, next) => {
@@ -17,6 +38,8 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(authRoutes);
 app.use(categoryRoutes);
