@@ -90,6 +90,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Request Body:**
     - `name`: String
     - `description`: String
+    - `image`: Image file
 - **Response Body:**
     - `message`: String
     - `category`: Object
