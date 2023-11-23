@@ -40,6 +40,12 @@ exports.createCategory = asyncHandler(async (req, res) => {
   const description = req.body.description;
   const image = req.file.path.replace('\\', '/');
 
+  const checkCategory = await Category.findOne({ name: name });
+  if (checkCategory) {
+    deleteImageHelper(image);
+    errorHelper('Category already exists.', 422);
+  }
+
   const category = await Category.create({
     name: name,
     description: description,
