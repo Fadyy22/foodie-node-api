@@ -6,8 +6,8 @@ const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 
 const dbConnection = require('./config/database');
-const authRoutes = require('./routes/auth');
-const categoryRoutes = require('./routes/category');
+const authRoutes = require('./routes/authRoute');
+const categoryRoutes = require('./routes/categoryRoute');
 
 dotenv.config({ path: 'config.env' });
 
@@ -42,7 +42,7 @@ app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(authRoutes);
-app.use(categoryRoutes);
+app.use('/categories', categoryRoutes);
 
 app.use((error, req, res, next) => {
   const statusCode = error.statusCode || 500;

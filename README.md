@@ -12,6 +12,7 @@
         - [Get All Categories](#get-all-categories)
         - [Get Category](#get-category)
         - [Create Category](#create-category)
+        - [Update Category](#update-category)
 ---
 ## Introduction
 This is the API for the Forkify application. It is built using Node.js, Express.js, and MongoDB.
@@ -68,15 +69,15 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Method:** `GET`
 - **Description:** Gets all categories.
 - **Response Body:**
-    - `categories`: Array of objects
+    - `categories`: Array of category objects
         - `id`: String
         - `name`: String
         - `description`: String
 
-#### Get Category
-- **URL:** `/categories?name={categoryName}`
+#### Get Specific Category
+- **URL:** `/categories/{id}`
 - **Method:** `GET`
-- **Description:** Gets a category by name.
+- **Description:** Gets a category by id.
 - **Response Body:**
     - `category`: Array with one category object
         - `id`: String
@@ -88,7 +89,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Method:** `POST`
 - **Description:** Creates a new category.
 - **Request Headers:**
-    - `Authorization`: jwt token
+    - `Authorization`: Bearer {jwt token}
 - **Request Body:**
     - `name`: String
     - `description`: String
@@ -99,3 +100,21 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `id`: String
         - `name`: String
         - `description`: String
+
+#### Update Category
+- **URL:** `/categories/{id}`
+- **Method:** `PUT`
+- **Description:** Updates a category by id.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `name`: String
+    - `description`: String
+    - `image`: Image file or same image path if no change
+- **Response Body:**
+    - `message`: String
+    - `category`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String

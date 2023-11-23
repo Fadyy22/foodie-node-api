@@ -4,16 +4,17 @@ const Schema = mongoose.Schema;
 const categorySchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   image: {
     type: String,
     required: true
   }
-});
+},
+  { timestamps: true });
 
 module.exports = mongoose.model('Category', categorySchema);

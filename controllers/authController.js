@@ -1,17 +1,17 @@
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { validationResult } = require('express-validator');
 
-const errorHelper = require('../helpers/error');
+const errorHelper = require('../utils/error');
 const User = require('../models/user');
 
 exports.signup = asyncHandler(async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    errorHelper('Validation failed.', 422, errors.array());
-  }
   const email = req.body.email;
+  const checkUser = await User.findOne({ email: email });
+  if (checkUser) {
+    errorHelper('email already exists.', 422);
+  }
+
   const name = req.body.name;
   const password = req.body.password;
   const hashedPassword = await bcrypt.hash(password, 12);
