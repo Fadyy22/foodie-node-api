@@ -7,11 +7,6 @@ const User = require('../models/user');
 
 exports.signup = asyncHandler(async (req, res, next) => {
   const email = req.body.email;
-  const checkUser = await User.findOne({ email: email });
-  if (checkUser) {
-    errorHelper('email already exists.', 422);
-  }
-
   const name = req.body.name;
   const password = req.body.password;
   const hashedPassword = await bcrypt.hash(password, 12);
@@ -22,6 +17,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
     name: name
   });
   const result = await user.save();
+
   res.status(201).json({ message: 'User created!', userId: result._id });
 });
 
@@ -31,12 +27,12 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   const user = await User.findOne({ email: email });
   if (!user) {
-    errorHelper('Invalid email or password', 401);
+    errorHelper('Invalid email or password.', 401);
   }
 
   const isEqual = await bcrypt.compare(password, user.password);
   if (!isEqual) {
-    errorHelper('Invalid email or password', 401);
+    errorHelper('Invalid email or password.', 401);
   }
 
   const token = jwt.sign({

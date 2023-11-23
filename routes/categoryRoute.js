@@ -9,19 +9,22 @@ const {
 
 const {
   getCategoryValidator,
-  createCategoryValidator
+  createCategoryValidator,
+  updateCategoryValidator
 } = require('../utils/validators/categoryValidator');
 
 const isAuth = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-router.route('/')
+router
+  .route('/')
   .get(getCategories)
   .post(isAuth, createCategoryValidator, createCategory);
 
-router.route('/:id')
+router
+  .route('/:id')
   .get(getCategoryValidator, getCategory)
-  .put(isAuth, createCategoryValidator, updateCategory);
+  .put(isAuth, updateCategoryValidator, updateCategory);
 
 module.exports = router;

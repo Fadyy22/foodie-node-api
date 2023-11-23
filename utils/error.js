@@ -1,6 +1,5 @@
-module.exports = (message, statusCode, data) => {
+module.exports = (message, statusCode) => {
   const error = new Error(message);
   error.statusCode = statusCode;
-  error.data = data;
   throw error;
 };

@@ -5,9 +5,11 @@ const dotenv = require('dotenv');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 
-const dbConnection = require('./config/database');
 const authRoutes = require('./routes/authRoute');
 const categoryRoutes = require('./routes/categoryRoute');
+const dbConnection = require('./config/database');
+const errorHelper = require('./utils/error');
+const globalError = require('./middlewares/errorMiddleware');
 
 dotenv.config({ path: 'config.env' });
 
@@ -44,15 +46,10 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(authRoutes);
 app.use('/categories', categoryRoutes);
 
-app.use((error, req, res, next) => {
-  const statusCode = error.statusCode || 500;
-  const message = error.message || 'Internal Server Error';
-  const data = error.data || [];
-
-  res.status(statusCode).json({
-    message: message,
-    data: data
-  });
+app.all('*', () => {
+  errorHelper('404 Not found', 404);
 });
+
+app.use(globalError);
 
 dbConnection(app);

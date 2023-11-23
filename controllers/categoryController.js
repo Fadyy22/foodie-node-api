@@ -18,11 +18,10 @@ exports.getCategories = asyncHandler(async (req, res) => {
 // @access  Public
 exports.getCategory = asyncHandler(async (req, res) => {
   const id = req.params.id;
-  console.log(id);
 
   const category = await Category.findById(id);
   if (!category) {
-    res.status(404).json({ message: 'Category not found.' });
+    errorHelper('Category not found.', 404);
   }
 
   res.status(200).json({ category: category });
@@ -39,12 +38,6 @@ exports.createCategory = asyncHandler(async (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
   const image = req.file.path.replace('\\', '/');
-
-  const checkCategory = await Category.findOne({ name: name });
-  if (checkCategory) {
-    deleteImageHelper(image);
-    errorHelper('Category already exists.', 422);
-  }
 
   const category = await Category.create({
     name: name,
@@ -77,7 +70,7 @@ exports.updateCategory = asyncHandler(async (req, res) => {
 
   const category = await Category.findById(id);
   if (!category) {
-    res.status(404).json({ message: 'Category not found.' });
+    errorHelper('Category not found.', 404);
   }
 
   if (category.image !== image) {
