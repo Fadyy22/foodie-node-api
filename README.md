@@ -13,6 +13,7 @@
         - [Get Category](#get-category)
         - [Create Category](#create-category)
         - [Update Category](#update-category)
+        - [Delete Category](#delete-category)
 ---
 ## Introduction
 This is the API for the Forkify application. It is built using Node.js, Express.js, and MongoDB.
@@ -111,6 +112,20 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `name`: String
     - `description`: String
     - `image`: Image file or same image path if no change
+- **Response Body:**
+    - `message`: String
+    - `category`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+
+#### Delete Category
+- **URL:** `/categories/{id}`
+- **Method:** `DELETE`
+- **Description:** Deletes a category by id.
+- **Request Headers**
+    - `Authorization`: Bearer {jwt token}
 - **Response Body:**
     - `message`: String
     - `category`: Object
