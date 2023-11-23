@@ -1,8 +1,8 @@
 const asyncHandler = require('express-async-handler');
 
 const Category = require('../models/category');
-const errorHelper = require('../utils/error');
 const deleteImageHelper = require('../utils/deleteImage');
+const errorHelper = require('../utils/error');
 
 // @desc    Get list of all categories
 // @route   GET /categories
