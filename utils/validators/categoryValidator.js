@@ -28,3 +28,8 @@ exports.updateCategoryValidator = [
   check('description').trim().isLength({ min: 5 }).withMessage('Category description is too short.'),
   validtorMiddleware
 ]
+
+exports.deleteCategoryValidator = [
+  check('id').isMongoId().withMessage('Invalid category id format.'),
+  validtorMiddleware
+]

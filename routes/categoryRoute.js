@@ -4,13 +4,15 @@ const {
   createCategory,
   getCategories,
   getCategory,
-  updateCategory
+  updateCategory,
+  deleteCategory
 } = require('../controllers/categoryController');
 
 const {
   getCategoryValidator,
   createCategoryValidator,
-  updateCategoryValidator
+  updateCategoryValidator,
+  deleteCategoryValidator
 } = require('../utils/validators/categoryValidator');
 
 const isAuth = require('../middlewares/authMiddleware');
@@ -25,6 +27,7 @@ router
 router
   .route('/:id')
   .get(getCategoryValidator, getCategory)
-  .put(isAuth, updateCategoryValidator, updateCategory);
+  .put(isAuth, updateCategoryValidator, updateCategory)
+  .delete(isAuth, deleteCategory);
 
 module.exports = router;

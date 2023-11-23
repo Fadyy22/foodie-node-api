@@ -85,3 +85,18 @@ exports.updateCategory = asyncHandler(async (req, res) => {
 
   res.status(200).json({ message: 'Category updated.', category: category });
 });
+
+// @desc    Delete category by id
+// @route   DELETE /categories/:id
+// @access  Private
+exports.deleteCategory = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+
+  const category = await Category.findByIdAndDelete(id);
+
+  if (!category) {
+    errorHelper('Category not found.', 404);
+  }
+
+  res.result(200).json({ message: 'Category deleted!', category: category });
+});
