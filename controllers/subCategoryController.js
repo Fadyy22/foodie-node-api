@@ -28,7 +28,9 @@ exports.createSubCategory = asyncHandler(async (req, res) => {
 // @route   GET /subcategories
 // @access  Public
 exports.getSubCategories = asyncHandler(async (req, res) => {
-  const subCategories = await SubCategory.find();
+  const filter = (req.params.categoryId) ? { category: req.params.categoryId } : {};
+  const subCategories = await SubCategory.find(filter);
+
 
   res.status(200).json({ subcategories: subCategories });
 });

@@ -15,9 +15,13 @@ const {
   deleteCategoryValidator
 } = require('../utils/validators/categoryValidator');
 
+const subCategoryRoute = require('../routes/subCategoryRoute');
+
 const isAuth = require('../middlewares/authMiddleware');
 
 const router = express.Router();
+
+router.use('/:categoryId/subcategories', subCategoryRoute);
 
 router
   .route('/')
@@ -28,6 +32,6 @@ router
   .route('/:id')
   .get(getCategoryValidator, getCategory)
   .put(updateCategoryValidator, updateCategory)
-  .delete(deleteCategory);
+  .delete(deleteCategoryValidator, deleteCategory);
 
 module.exports = router;

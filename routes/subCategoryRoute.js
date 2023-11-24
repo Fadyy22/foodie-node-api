@@ -15,7 +15,7 @@ const {
   deleteSubCategoryValidator
 } = require('../utils/validators/subCategoryValidator');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
   .route('/')
