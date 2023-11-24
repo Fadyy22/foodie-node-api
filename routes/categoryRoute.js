@@ -5,7 +5,8 @@ const {
   getCategories,
   getCategory,
   updateCategory,
-  deleteCategory
+  deleteCategory,
+  uploadCategoryImage
 } = require('../controllers/categoryController');
 
 const {
@@ -26,12 +27,12 @@ router.use('/:categoryId/subcategories', subCategoryRoute);
 router
   .route('/')
   .get(getCategories)
-  .post(createCategoryValidator, createCategory);
+  .post(uploadCategoryImage, createCategoryValidator, createCategory);
 
 router
   .route('/:id')
   .get(getCategoryValidator, getCategory)
-  .put(updateCategoryValidator, updateCategory)
+  .put(uploadCategoryImage, updateCategoryValidator, updateCategory)
   .delete(deleteCategoryValidator, deleteCategory);
 
 module.exports = router;

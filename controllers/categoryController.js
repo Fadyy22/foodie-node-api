@@ -1,8 +1,11 @@
 const asyncHandler = require('express-async-handler');
 
-const Category = require('../models/category');
 const deleteImageHelper = require('../utils/deleteImage');
 const errorHelper = require('../utils/error');
+const uploadSingleImage = require('../middlewares/uploadImageMiddleware');
+const Category = require('../models/category');
+
+exports.uploadCategoryImage = uploadSingleImage('categories', 'image');
 
 // @desc    Get list of all categories
 // @route   GET /categories
@@ -31,13 +34,13 @@ exports.getCategory = asyncHandler(async (req, res) => {
 // @route   POST /categories
 // @access  Private
 exports.createCategory = asyncHandler(async (req, res) => {
-  if (!req.file) {
-    errorHelper('No image provided.', 422);
-  }
+  // if (!req.file) {
+  //   errorHelper('No image provided.', 422);
+  // }
 
   const name = req.body.name;
   const description = req.body.description;
-  const image = req.file.path.replace('\\', '/');
+  const image = req.file.path.replace('uploads\\', '').replace('\\', '/');
 
   const category = await Category.create({
     name: name,

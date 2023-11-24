@@ -2,20 +2,30 @@ const asyncHandler = require('express-async-handler');
 
 const SubCategory = require('../models/subCategory');
 const deleteImageHelper = require('../utils/deleteImage');
+const uploadSingleImage = require('../middlewares/uploadImageMiddleware');
 const errorHelper = require('../utils/error');
+
+
+exports.uploadSubCategoryImage = uploadSingleImage('subcategories', 'image');
 
 // @desc    Create subcategory
 // @route   POST /subcategories
 // @access  Private
 exports.createSubCategory = asyncHandler(async (req, res) => {
+  // if (!req.file) {
+  //   errorHelper('No image provided.', 422);
+  // }
+
   const name = req.body.name;
   const description = req.body.description;
   const category = req.body.category;
+  const image = req.file.path.replace('uploads\\', '').replace('\\', '/');
 
   const subcategory = await SubCategory.create({
     name: name,
     description: description,
-    category: category
+    category: category,
+    image: image
   });
 
   res.status(201).json({
@@ -53,6 +63,7 @@ exports.getSubCategory = asyncHandler(async (req, res) => {
 // @route   PUT /subcategories/:id
 // @access  Private
 exports.updateSubCategory = asyncHandler(async (req, res) => {
+  // add image upload logic
   const { id } = req.params;
   const { name, description, category } = req.body;
 

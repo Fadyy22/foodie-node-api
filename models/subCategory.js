@@ -11,6 +11,10 @@ const subCategorySchema = new Schema({
     type: String,
     required: true
   },
+  image: {
+    type: String,
+    required: false
+  },
   category: {
     type: Schema.ObjectId,
     ref: 'Category',
