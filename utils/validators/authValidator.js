@@ -4,8 +4,13 @@ const validtorMiddleware = require('../../middlewares/validatorMiddleware');
 const User = require('../../models/user');
 
 exports.signupValidator = [
-  check('name').trim().isLength({ min: 4 }).withMessage('name is too short.'),
-  check('email').isEmail().withMessage('Invalid email.')
+  check('name')
+    .trim()
+    .isLength({ min: 4 })
+    .withMessage('name is too short.'),
+  check('email')
+    .isEmail()
+    .withMessage('Invalid email.')
     .custom(value => {
       return User.findOne({ email: value })
         .then(user => {
@@ -14,6 +19,8 @@ exports.signupValidator = [
           }
         });
     }),
-  check('password').trim().isStrongPassword({ minSymbols: 0 }),
+  check('password')
+    .trim()
+    .isStrongPassword({ minSymbols: 0 }),
   validtorMiddleware
 ]

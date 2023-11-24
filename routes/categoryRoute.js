@@ -22,12 +22,12 @@ const router = express.Router();
 router
   .route('/')
   .get(getCategories)
-  .post(isAuth, createCategoryValidator, createCategory);
+  .post(createCategoryValidator, createCategory);
 
 router
   .route('/:id')
   .get(getCategoryValidator, getCategory)
-  .put(isAuth, updateCategoryValidator, updateCategory)
-  .delete(isAuth, deleteCategory);
+  .put(updateCategoryValidator, updateCategory)
+  .delete(deleteCategory);
 
 module.exports = router;

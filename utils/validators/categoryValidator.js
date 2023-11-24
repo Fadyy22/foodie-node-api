@@ -4,12 +4,18 @@ const validtorMiddleware = require('../../middlewares/validatorMiddleware');
 const Category = require('../../models/category');
 
 exports.getCategoryValidator = [
-  check('id').isMongoId().withMessage('Invalid category id format.'),
+  check('id')
+    .isMongoId()
+    .withMessage('Invalid category id format.'),
   validtorMiddleware
 ]
 
 exports.createCategoryValidator = [
-  check('name').trim().isAlpha().isLength({ min: 3 }).withMessage('Category name is too short.')
+  check('name')
+    .trim()
+    .isAlpha()
+    .isLength({ min: 3 })
+    .withMessage('Category name is too short.')
     .custom(value => {
       return Category.findOne({ name: value })
         .then(category => {
@@ -18,18 +24,34 @@ exports.createCategoryValidator = [
           }
         });
     }),
-  check('description').trim().isLength({ min: 5 }).withMessage('Category description is too short.'),
+  check('description')
+    .trim()
+    .isLength({ min: 5 })
+    .withMessage('Category description is too short.'),
   validtorMiddleware
 ]
 
 exports.updateCategoryValidator = [
-  check('id').isMongoId().withMessage('Invalid category id format.'),
-  check('name').trim().isAlpha().isLength({ min: 3 }).withMessage('Category name is too short.'),
-  check('description').trim().isLength({ min: 5 }).withMessage('Category description is too short.'),
+  check('id')
+    .isMongoId()
+    .withMessage('Invalid category id format.'),
+  check('name')
+    .optional()
+    .trim()
+    .isAlpha()
+    .isLength({ min: 3 })
+    .withMessage('Category name is too short.'),
+  check('description')
+    .optional()
+    .trim()
+    .isLength({ min: 5 })
+    .withMessage('Category description is too short.'),
   validtorMiddleware
 ]
 
 exports.deleteCategoryValidator = [
-  check('id').isMongoId().withMessage('Invalid category id format.'),
+  check('id')
+    .isMongoId()
+    .withMessage('Invalid category id format.'),
   validtorMiddleware
 ]

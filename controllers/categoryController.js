@@ -56,8 +56,7 @@ exports.createCategory = asyncHandler(async (req, res) => {
 // @access  Private
 exports.updateCategory = asyncHandler(async (req, res) => {
   const id = req.params.id;
-  const name = req.body.name;
-  const description = req.body.description;
+  const { name, description } = req.body;
   let image = req.body.image;
 
   if (req.file) {
@@ -77,13 +76,13 @@ exports.updateCategory = asyncHandler(async (req, res) => {
     deleteImageHelper(category.image);
   }
 
-  category.name = name;
-  category.description = description;
-  category.image = image;
+  const newCategory = await Category.findOneAndUpdate({ _id: id }, {
+    name,
+    description,
+    image
+  }, { new: true });
 
-  await category.save();
-
-  res.status(200).json({ message: 'Category updated.', category: category });
+  res.status(200).json({ message: 'Category updated!', category: newCategory });
 });
 
 // @desc    Delete category by id
@@ -98,5 +97,5 @@ exports.deleteCategory = asyncHandler(async (req, res) => {
     errorHelper('Category not found.', 404);
   }
 
-  res.result(200).json({ message: 'Category deleted!', category: category });
+  res.status(200).json({ message: 'Category deleted!', category: category });
 });

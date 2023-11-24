@@ -7,6 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const authRoutes = require('./routes/authRoute');
 const categoryRoutes = require('./routes/categoryRoute');
+const subCategoryRoutes = require('./routes/subCategoryRoute');
 const dbConnection = require('./config/database');
 const errorHelper = require('./utils/error');
 const globalError = require('./middlewares/errorMiddleware');
@@ -45,6 +46,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(authRoutes);
 app.use('/categories', categoryRoutes);
+app.use('/subcategories', subCategoryRoutes);
 
 app.all('*', () => {
   errorHelper('404 Not found', 404);

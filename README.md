@@ -14,6 +14,12 @@
         - [Create Category](#create-category)
         - [Update Category](#update-category)
         - [Delete Category](#delete-category)
+    - [Subcategory Endpoints](#subcategory-endpoints)
+        - [Get All Subcategories](#get-all-subcategories)
+        - [Get Subcategory](#get-subcategory)
+        - [Create Subcategory](#create-subcategory)
+        - [Update Subcategory](#update-subcategory)
+        - [Delete Subcategory](#delete-subcategory)S
 ---
 ## Introduction
 This is the API for the Forkify application. It is built using Node.js, Express.js, and MongoDB.
@@ -133,3 +139,76 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `name`: String
         - `description`: String
         - `image`: String
+
+
+### Subcategory Endpoints
+
+#### Get All Subcategories
+- **URL:** `/subcategories`
+- **Method:** `GET`
+- **Description:** Gets all subcategories.
+- **Response Body:**
+    - `subcategories`: Array of subcategory objects
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `category`: String
+
+
+#### Get Specific Subcategory
+- **URL:** `/subcategories/{id}`
+- **Method:** `GET`
+- **Description:** Gets a subcategory by id.
+- **Response Body:**
+    - `subcategory`: Array with one subcategory object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `category`: String
+
+
+#### Create Subcategory
+- **URL:** `/subcategories`
+- **Method:** `POST`
+- **Description:** Creates a new subcategory.
+- **Request Body:**
+    - `name`: String
+    - `description`: String
+    - `category`: String
+- **Response Body:**
+    - `message`: String
+    - `subcategory`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `category`: String
+
+
+#### Update Subcategory
+- **URL:** `/subcategories/{id}`
+- **Method:** `PUT`
+- **Description:** Updates a subcategory by id.
+- **Request Body:**
+    - `name`: String
+    - `description`: String
+    - `category`: String
+- **Response Body:**
+    - `message`: String
+    - `subcategory`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `category`: String
+
+
+#### Delete Subcategory
+- **URL:** `/subcategories/{id}`
+- **Method:** `DELETE`
+- **Description:** Deletes a subcategory by id.
+- **Response Body:**
+    - `message`: String
+    - `subcategory`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `category`: String
