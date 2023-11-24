@@ -19,7 +19,10 @@
         - [Get Subcategory](#get-subcategory)
         - [Create Subcategory](#create-subcategory)
         - [Update Subcategory](#update-subcategory)
-        - [Delete Subcategory](#delete-subcategory)S
+        - [Delete Subcategory](#delete-subcategory)
+    - [Category/Subcategory Endpoints](#category/subcategory-endpoints)
+        - [Get All Subcategories of a Category](#get-all-subcategories-of-a-category)
+
 ---
 ## Introduction
 This is the API for the Forkify application. It is built using Node.js, Express.js, and MongoDB.
@@ -208,6 +211,20 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Response Body:**
     - `message`: String
     - `subcategory`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `category`: String
+
+
+### Category/Subcategory Endpoints
+
+#### Get All Subcategories of a Category
+- **URL:** `/categories/{id}/subcategories`
+- **Method:** `GET`
+- **Description:** Gets all subcategories of a category.
+- **Response Body:**
+    - `subcategories`: Array of subcategory objects
         - `id`: String
         - `name`: String
         - `description`: String
