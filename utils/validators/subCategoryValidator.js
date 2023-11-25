@@ -8,7 +8,7 @@ exports.getSubCategoryValidator = [
     .isMongoId()
     .withMessage('Invalid subcategory id format.'),
   validtorMiddleware
-]
+];
 
 exports.createSubCategoryValidator = [
   check('name')
@@ -31,7 +31,7 @@ exports.createSubCategoryValidator = [
     .isMongoId()
     .withMessage('Invalid category id.'),
   validtorMiddleware
-]
+];
 
 exports.updateSubCategoryValidator = [
   check('id')
@@ -52,11 +52,11 @@ exports.updateSubCategoryValidator = [
     .isMongoId()
     .withMessage('Invalid category id format.'),
   validtorMiddleware
-]
+];
 
 exports.deleteSubCategoryValidator = [
   check('id')
     .isMongoId()
     .withMessage('Invalid Subcategory id format.'),
   validtorMiddleware
-]
+];

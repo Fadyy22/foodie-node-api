@@ -18,8 +18,6 @@ const {
 
 const subCategoryRoute = require('../routes/subCategoryRoute');
 
-const isAuth = require('../middlewares/authMiddleware');
-
 const router = express.Router();
 
 router.use('/:categoryId/subcategories', subCategoryRoute);

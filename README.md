@@ -22,6 +22,10 @@
         - [Delete Subcategory](#delete-subcategory)
     - [Category/Subcategory Endpoints](#category/subcategory-endpoints)
         - [Get All Subcategories of a Category](#get-all-subcategories-of-a-category)
+    - [Recipe Endpoints](#recipe-endpoints)
+        - [Get All Recipes](#get-all-recipes)
+        - [Get Recipe](#get-recipe)
+        - [Create Recipe](#create-recipe)
 
 ---
 ## Introduction
@@ -229,3 +233,70 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `name`: String
         - `description`: String
         - `category`: String
+
+
+### Recipe Endpoints
+
+#### Get All Recipes
+- **URL:** `/recipes`
+- **Method:** `GET`
+- **Description:** Gets all recipes.
+- **Response Body:**
+    - `documents`: Array of recipe objects
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+        - `ingredients`: Array of ingredient objects
+            - `name`: String
+        - `prep_time`: Number
+        - `calories`: Number
+        - `category`: String
+        - `subcategory`: String
+
+
+#### Get Specific Recipe
+- **URL:** `/recipes/{id}`
+- **Method:** `GET`
+- **Description:** Gets a recipe by id.
+- **Response Body:**
+    - `document`: Array with one recipe object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+        - `ingredients`: Array of ingredient objects
+            - `name`: String
+        - `prep_time`: Number
+        - `calories`: Number
+        - `category`: String
+        - `subcategory`: String
+
+
+#### Create Recipe
+- **URL:** `/recipes`
+- **Method:** `POST`
+- **Description:** Creates a new recipe.
+- **Request Body:**
+    - `name`: String
+    - `description`: String
+    - `image`: Image file
+    - `ingredients`: Array of ingredient objects
+        - `name`: String
+    - `prep_time`: Number
+    - `calories`: Number
+    - `category`: String
+    - `subcategory`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+        - `ingredients`: Array of ingredient objects
+            - `name`: String
+        - `prep_time`: Number
+        - `calories`: Number
+        - `category`: String
+        - `subcategory`: String

@@ -8,7 +8,7 @@ exports.getCategoryValidator = [
     .isMongoId()
     .withMessage('Invalid category id format.'),
   validtorMiddleware
-]
+];
 
 exports.createCategoryValidator = [
   check('name')
@@ -28,7 +28,7 @@ exports.createCategoryValidator = [
     .isLength({ min: 5 })
     .withMessage('Category description is too short.'),
   validtorMiddleware
-]
+];
 
 exports.updateCategoryValidator = [
   check('id')
@@ -45,11 +45,11 @@ exports.updateCategoryValidator = [
     .isLength({ min: 5 })
     .withMessage('Category description is too short.'),
   validtorMiddleware
-]
+];
 
 exports.deleteCategoryValidator = [
   check('id')
     .isMongoId()
     .withMessage('Invalid category id format.'),
   validtorMiddleware
-]
+];

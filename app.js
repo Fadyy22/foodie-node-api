@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoute');
 const categoryRoutes = require('./routes/categoryRoute');
 const subCategoryRoutes = require('./routes/subCategoryRoute');
+const recipeRoutes = require('./routes/recipeRoute');
 const dbConnection = require('./config/database');
 const errorHelper = require('./utils/error');
 const globalError = require('./middlewares/errorMiddleware');
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 app.use(authRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/subcategories', subCategoryRoutes);
+app.use('/recipes', recipeRoutes);
 
 app.all('*', () => {
   errorHelper('404 Not found', 404);
