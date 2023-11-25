@@ -79,7 +79,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Method:** `GET`
 - **Description:** Gets all categories.
 - **Response Body:**
-    - `categories`: Array of category objects
+    - `documents`: Array of category objects
         - `id`: String
         - `name`: String
         - `description`: String
@@ -89,7 +89,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Method:** `GET`
 - **Description:** Gets a category by id.
 - **Response Body:**
-    - `category`: Array with one category object
+    - `document`: Array with one category object
         - `id`: String
         - `name`: String
         - `description`: String
@@ -106,7 +106,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `image`: Image file
 - **Response Body:**
     - `message`: String
-    - `category`: Object
+    - `document`: Object
         - `id`: String
         - `name`: String
         - `description`: String
@@ -123,7 +123,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `image`: Image file or same image path if no change
 - **Response Body:**
     - `message`: String
-    - `category`: Object
+    - `document`: Object
         - `id`: String
         - `name`: String
         - `description`: String
@@ -137,7 +137,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `Authorization`: Bearer {jwt token}
 - **Response Body:**
     - `message`: String
-    - `category`: Object
+    - `document`: Object
         - `id`: String
         - `name`: String
         - `description`: String
@@ -151,7 +151,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Method:** `GET`
 - **Description:** Gets all subcategories.
 - **Response Body:**
-    - `subcategories`: Array of subcategory objects
+    - `documents`: Array of subcategory objects
         - `id`: String
         - `name`: String
         - `description`: String
@@ -163,7 +163,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Method:** `GET`
 - **Description:** Gets a subcategory by id.
 - **Response Body:**
-    - `subcategory`: Array with one subcategory object
+    - `document`: Array with one subcategory object
         - `id`: String
         - `name`: String
         - `description`: String
@@ -180,7 +180,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `category`: String
 - **Response Body:**
     - `message`: String
-    - `subcategory`: Object
+    - `document`: Object
         - `id`: String
         - `name`: String
         - `description`: String
@@ -197,7 +197,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `category`: String
 - **Response Body:**
     - `message`: String
-    - `subcategory`: Object
+    - `document`: Object
         - `id`: String
         - `name`: String
         - `description`: String
@@ -210,7 +210,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Description:** Deletes a subcategory by id.
 - **Response Body:**
     - `message`: String
-    - `subcategory`: Object
+    - `document`: Object
         - `id`: String
         - `name`: String
         - `description`: String
@@ -224,7 +224,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Method:** `GET`
 - **Description:** Gets all subcategories of a category.
 - **Response Body:**
-    - `subcategories`: Array of subcategory objects
+    - `documents`: Array of subcategory objects
         - `id`: String
         - `name`: String
         - `description`: String

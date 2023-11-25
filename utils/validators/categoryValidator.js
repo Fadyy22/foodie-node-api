@@ -13,7 +13,6 @@ exports.getCategoryValidator = [
 exports.createCategoryValidator = [
   check('name')
     .trim()
-    .isAlpha()
     .isLength({ min: 3 })
     .withMessage('Category name is too short.')
     .custom(value => {
@@ -38,7 +37,6 @@ exports.updateCategoryValidator = [
   check('name')
     .optional()
     .trim()
-    .isAlpha()
     .isLength({ min: 3 })
     .withMessage('Category name is too short.'),
   check('description')

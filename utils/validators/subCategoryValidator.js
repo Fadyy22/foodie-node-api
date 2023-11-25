@@ -13,7 +13,6 @@ exports.getSubCategoryValidator = [
 exports.createSubCategoryValidator = [
   check('name')
     .trim()
-    .isAlpha()
     .isLength({ min: 3 })
     .withMessage('Subcategory name is too short.')
     .custom(value => {
@@ -41,7 +40,6 @@ exports.updateSubCategoryValidator = [
   check('name')
     .optional()
     .trim()
-    .isAlpha()
     .isLength({ min: 3 })
     .withMessage('Subcategory name is too short.'),
   check('description')
