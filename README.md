@@ -294,8 +294,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `name`: String
         - `description`: String
         - `image`: String
-        - `ingredients`: Array of ingredient objects
-            - `name`: String
+        - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
         - `category`: String
