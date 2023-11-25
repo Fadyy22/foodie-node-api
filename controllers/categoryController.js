@@ -1,107 +1,15 @@
-const asyncHandler = require('express-async-handler');
-
-const deleteImageHelper = require('../utils/deleteImage');
-const errorHelper = require('../utils/error');
 const uploadSingleImage = require('../middlewares/uploadImageMiddleware');
+const factory = require('./handlersFactory');
 const Category = require('../models/category');
 
 exports.uploadCategoryImage = uploadSingleImage('categories', 'image');
 
-// @desc    Get list of all categories
-// @route   GET /categories
-// @access  Public
-exports.getCategories = asyncHandler(async (req, res) => {
-  const categories = await Category.find();
+exports.createCategory = factory.createOne(Category);
 
-  res.status(200).json({ categories: categories });
-});
+exports.getCategories = factory.getAll(Category);
 
-// @desc    Get specific category by id
-// @route   GET /categories/:id
-// @access  Public
-exports.getCategory = asyncHandler(async (req, res) => {
-  const id = req.params.id;
+exports.getCategory = factory.getOne(Category);
 
-  const category = await Category.findById(id);
-  if (!category) {
-    errorHelper('Category not found.', 404);
-  }
+exports.updateCategory = factory.updateOne(Category);
 
-  res.status(200).json({ category: category });
-});
-
-// @desc    Create category
-// @route   POST /categories
-// @access  Private
-exports.createCategory = asyncHandler(async (req, res) => {
-  // if (!req.file) {
-  //   errorHelper('No image provided.', 422);
-  // }
-
-  const name = req.body.name;
-  const description = req.body.description;
-  let image;
-  if (req.file) {
-    image = req.file.path.replace('uploads\\', '').replace('\\', '/');
-  }
-
-  const category = await Category.create({
-    name: name,
-    description: description,
-    image: image
-  });
-
-  res.status(201).json({
-    message: 'Category created!',
-    category: category
-  });
-});
-
-// @desc    Update category by id
-// @route   PUT /categories/:id
-// @access  Private
-exports.updateCategory = asyncHandler(async (req, res) => {
-  const id = req.params.id;
-  const { name, description } = req.body;
-  let image = req.body.image;
-
-  if (req.file) {
-    image = req.file.path.replace('\\', '/');
-  }
-
-  // if (!image) {
-  //   errorHelper('No image provided.', 422);
-  // }
-
-  const category = await Category.findById(id);
-  if (!category) {
-    errorHelper('Category not found.', 404);
-  }
-
-  if (category.image !== image) {
-    deleteImageHelper(category.image);
-  }
-
-  const newCategory = await Category.findOneAndUpdate({ _id: id }, {
-    name,
-    description,
-    image
-  }, { new: true });
-
-  res.status(200).json({ message: 'Category updated!', category: newCategory });
-});
-
-// @desc    Delete category by id
-// @route   DELETE /categories/:id
-// @access  Private
-exports.deleteCategory = asyncHandler(async (req, res) => {
-  const id = req.params.id;
-
-  const category = await Category.findByIdAndDelete(id);
-
-  if (!category) {
-    errorHelper('Category not found.', 404);
-  }
-
-  res.status(200).json({ message: 'Category deleted!', category: category });
-});
+exports.deleteCategory = factory.deleteOne(Category);
