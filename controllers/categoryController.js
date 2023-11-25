@@ -40,7 +40,10 @@ exports.createCategory = asyncHandler(async (req, res) => {
 
   const name = req.body.name;
   const description = req.body.description;
-  const image = req.file.path.replace('uploads\\', '').replace('\\', '/');
+  let image;
+  if (req.file) {
+    image = req.file.path.replace('uploads\\', '').replace('\\', '/');
+  }
 
   const category = await Category.create({
     name: name,
@@ -66,9 +69,9 @@ exports.updateCategory = asyncHandler(async (req, res) => {
     image = req.file.path.replace('\\', '/');
   }
 
-  if (!image) {
-    errorHelper('No image provided.', 422);
-  }
+  // if (!image) {
+  //   errorHelper('No image provided.', 422);
+  // }
 
   const category = await Category.findById(id);
   if (!category) {

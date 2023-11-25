@@ -19,7 +19,10 @@ exports.createSubCategory = asyncHandler(async (req, res) => {
   const name = req.body.name;
   const description = req.body.description;
   const category = req.body.category;
-  const image = req.file.path.replace('uploads\\', '').replace('\\', '/');
+  let image;
+  if (req.file) {
+    image = req.file.path.replace('uploads\\', '').replace('\\', '/');
+  }
 
   const subcategory = await SubCategory.create({
     name: name,
