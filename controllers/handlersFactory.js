@@ -49,9 +49,9 @@ exports.updateOne = Model => asyncHandler(async (req, res) => {
     errorHelper('document not found.', 404);
   }
 
-  // if (document.image !== image) {
-  //   deleteImageHelper(document.image);
-  // }
+  if (req.body.image && document.image) {
+    deleteImageHelper(document.image);
+  }
 
   const newDocument = await Model.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
@@ -63,6 +63,10 @@ exports.deleteOne = Model => asyncHandler(async (req, res) => {
 
   if (!document) {
     errorHelper('document not found.', 404);
+  }
+
+  if (document.image) {
+    deleteImageHelper(document.image);
   }
 
   res.status(200).json({ message: 'document deleted!' });
