@@ -26,6 +26,8 @@
         - [Get All Recipes](#get-all-recipes)
         - [Get Recipe](#get-recipe)
         - [Create Recipe](#create-recipe)
+        - [Update Recipe](#update-recipe)
+        - [Delete Recipe](#delete-recipe)
 
 ---
 ## Introduction
@@ -124,7 +126,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Request Body:**
     - `name`: String
     - `description`: String
-    - `image`: Image file or same image path if no change
+    - `image`: Image
 - **Response Body:**
     - `message`: String
     - `document`: Object
@@ -247,8 +249,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `name`: String
         - `description`: String
         - `image`: String
-        - `ingredients`: Array of ingredient objects
-            - `name`: String
+        - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
         - `category`: String
@@ -265,8 +266,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `name`: String
         - `description`: String
         - `image`: String
-        - `ingredients`: Array of ingredient objects
-            - `name`: String
+        - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
         - `category`: String
@@ -281,12 +281,56 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `name`: String
     - `description`: String
     - `image`: Image file
-    - `ingredients`: Array of ingredient objects
-        - `name`: String
+    - `ingredients`: Array of ingredients
     - `prep_time`: Number
     - `calories`: Number
     - `category`: String
     - `subcategory`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+        - `ingredients`: Array of ingredients
+        - `prep_time`: Number
+        - `calories`: Number
+        - `category`: String
+        - `subcategory`: String
+
+
+#### Update Recipe
+- **URL:** `/recipes/{id}`
+- **Method:** `PUT`
+- **Description:** Updates a recipe by id.
+- **Request Body:**
+    - `name`: String
+    - `description`: String
+    - `image`: Image file
+    - `ingredients`: Array of ingredients
+    - `prep_time`: Number
+    - `calories`: Number
+    - `category`: String
+    - `subcategory`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+        - `ingredients`: Array of ingredients
+        - `prep_time`: Number
+        - `calories`: Number
+        - `category`: String
+        - `subcategory`: String
+
+
+#### Delete Recipe
+- **URL:** `/recipes/{id}`
+- **Method:** `DELETE`
+- **Description:** Deletes a recipe by id.
 - **Response Body:**
     - `message`: String
     - `document`: Object
