@@ -32,7 +32,10 @@ exports.getOne = Model => asyncHandler(async (req, res) => {
     errorHelper('document not found.', 404);
   }
 
-  res.status(200).json({ document: document });
+  docObject = document.toObject();
+  delete docObject.password;
+
+  res.status(200).json({ document: docObject });
 });
 
 exports.updateOne = Model => asyncHandler(async (req, res) => {

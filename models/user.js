@@ -13,10 +13,18 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
+  collections: [{
+    name: {
+      type: String,
+      required: true,
+    },
+    recipes: [{
+      type: Schema.ObjectId,
+      ref: 'Recipe'
+    }]
+  }]
 });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

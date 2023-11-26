@@ -8,6 +8,7 @@ const authRoutes = require('./routes/authRoute');
 const categoryRoutes = require('./routes/categoryRoute');
 const subCategoryRoutes = require('./routes/subCategoryRoute');
 const recipeRoutes = require('./routes/recipeRoute');
+const userRoutes = require('./routes/userRoute');
 const dbConnection = require('./config/database');
 const errorHelper = require('./utils/error');
 const globalError = require('./middlewares/errorMiddleware');
@@ -30,6 +31,7 @@ app.use(authRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/subcategories', subCategoryRoutes);
 app.use('/recipes', recipeRoutes);
+app.use('/users', userRoutes);
 
 app.all('*', () => {
   errorHelper('404 Not found', 404);
