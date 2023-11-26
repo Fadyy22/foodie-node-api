@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
   const token = authHeader.split(' ')[1];
 
   try {
-    decodedToken = jwt.verify(token, 'ForkifyReactFlutterNodeJS');
+    decodedToken = jwt.verify(token, process.env.JWT_KEY);
   } catch (error) {
     errorHelper('Internal Server Error', 500, error);
   }
