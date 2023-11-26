@@ -6,7 +6,8 @@ const {
   getSubCategory,
   updateSubCategory,
   deleteSubCategory,
-  uploadSubCategoryImage
+  uploadSubCategoryImage,
+  createFilterObject
 } = require('../controllers/subCategoryController');
 
 const {
@@ -21,7 +22,7 @@ const router = express.Router({ mergeParams: true });
 router
   .route('/')
   .post(uploadSubCategoryImage, createSubCategoryValidator, createSubCategory)
-  .get(getSubCategories);
+  .get(createFilterObject, getSubCategories);
 
 router
   .route('/:id')

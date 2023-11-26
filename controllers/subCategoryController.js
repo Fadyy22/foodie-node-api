@@ -2,6 +2,15 @@ const uploadSingleImage = require('../middlewares/uploadImageMiddleware');
 const factory = require('./handlersFactory');
 const SubCategory = require('../models/subCategory');
 
+exports.createFilterObject = (req, res, next) => {
+  let filterObject = {};
+  if (req.params.categoryId) {
+    filterObject = { category: req.params.categoryId };
+  }
+  req.filterObject = filterObject;
+  next();
+}
+
 exports.uploadSubCategoryImage = uploadSingleImage('subcategories', 'image');
 
 exports.createSubCategory = factory.createOne(SubCategory);
