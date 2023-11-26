@@ -21,7 +21,7 @@ exports.createRecipeValidator = [
     .trim()
     .isLength({ min: 5 })
     .withMessage('Recipe description is too short.'),
-  check('ingredietns')
+  check('ingredients')
     .isArray()
     .withMessage('Ingreidens must be an array of strings.'),
   check('prep_time')
@@ -73,7 +73,7 @@ exports.updateRecipeValidator = [
     .trim()
     .isLength({ min: 5 })
     .withMessage('Recipe description is too short.'),
-  check('ingredietns')
+  check('ingredients')
     .optional()
     .isArray()
     .withMessage('Ingreidens must be an array of strings.'),
