@@ -20,7 +20,6 @@
         - [Create Subcategory](#create-subcategory)
         - [Update Subcategory](#update-subcategory)
         - [Delete Subcategory](#delete-subcategory)
-    - [Category/Subcategory Endpoints](#category/subcategory-endpoints)
         - [Get All Subcategories of a Category](#get-all-subcategories-of-a-category)
     - [Recipe Endpoints](#recipe-endpoints)
         - [Get All Recipes](#get-all-recipes)
@@ -224,8 +223,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `description`: String
         - `category`: String
 
-
-### Category/Subcategory Endpoints
 
 #### Get All Subcategories of a Category
 - **URL:** `/categories/{id}/subcategories`
