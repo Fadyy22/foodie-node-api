@@ -3,6 +3,14 @@ const { check } = require('express-validator');
 const validtorMiddleware = require('../../middlewares/validatorMiddleware');
 const SubCategory = require('../../models/subCategory');
 
+exports.getSubCategoriesValidator = [
+  check('categoryId')
+    .optional()
+    .isMongoId()
+    .withMessage('Invalid category id format.'),
+  validtorMiddleware
+];
+
 exports.getSubCategoryValidator = [
   check('id')
     .isMongoId()

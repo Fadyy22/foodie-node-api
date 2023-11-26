@@ -28,6 +28,8 @@
         - [Create Recipe](#create-recipe)
         - [Update Recipe](#update-recipe)
         - [Delete Recipe](#delete-recipe)
+        - [Get All Recipes of a Category](#get-all-recipes-of-a-category)
+        - [Get All Recipes of a Subcategory](#get-all-recipes-of-a-subcategory)
 
 ---
 ## Introduction
@@ -334,6 +336,40 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 - **Response Body:**
     - `message`: String
     - `document`: Object
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+        - `ingredients`: Array of ingredients
+        - `prep_time`: Number
+        - `calories`: Number
+        - `category`: String
+        - `subcategory`: String
+
+
+#### Get All Recipes of a Category
+- **URL:** `/categories/{id}/recipes`
+- **Method:** `GET`
+- **Description:** Gets all recipes of a category.
+- **Response Body:**
+    - `documents`: Array of recipe objects
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+        - `ingredients`: Array of ingredients
+        - `prep_time`: Number
+        - `calories`: Number
+        - `category`: String
+        - `subcategory`: String
+
+
+#### Get All Recipes of a Subcategory
+- **URL:** `/subcategories/{id}/recipes`
+- **Method:** `GET`
+- **Description:** Gets all recipes of a subcategory.
+- **Response Body:**
+    - `documents`: Array of recipe objects
         - `id`: String
         - `name`: String
         - `description`: String

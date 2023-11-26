@@ -5,6 +5,18 @@ const Category = require('../../models/category');
 const SubCategory = require('../../models/subCategory');
 const Recipe = require('../../models/recipe');
 
+exports.getRecipesValidator = [
+  check('categoryId')
+    .optional()
+    .isMongoId()
+    .withMessage('Invalid category id format.'),
+  check('subcategoryId')
+    .optional()
+    .isMongoId()
+    .withMessage('Invalid subcategory id format.'),
+  validtorMiddleware
+];
+
 exports.getRecipeValidator = [
   check('id')
     .isMongoId()

@@ -6,22 +6,24 @@ const {
   getRecipe,
   updateRecipe,
   deleteRecipe,
-  uploadRecipeImage
+  uploadRecipeImage,
+  createFilterObject
 } = require('../controllers/recipeController');
 
 const {
-  getRecipeValidator,
   createRecipeValidator,
+  getRecipesValidator,
+  getRecipeValidator,
   updateRecipeValidator,
   deleteRecipeValidator
 } = require('../utils/validators/recipeValidator');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
   .route('/')
-  .get(getRecipes)
-  .post(uploadRecipeImage, createRecipeValidator, createRecipe);
+  .post(uploadRecipeImage, createRecipeValidator, createRecipe)
+  .get(createFilterObject, getRecipesValidator, getRecipes);
 
 router
   .route('/:id')

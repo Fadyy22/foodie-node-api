@@ -12,17 +12,22 @@ const {
 
 const {
   createSubCategoryValidator,
+  getSubCategoriesValidator,
   getSubCategoryValidator,
   updateSubCategoryValidator,
   deleteSubCategoryValidator
 } = require('../utils/validators/subCategoryValidator');
 
+const recipeRoute = require('./recipeRoute');
+
 const router = express.Router({ mergeParams: true });
+
+router.use('/:subcategoryId/recipes', recipeRoute);
 
 router
   .route('/')
   .post(uploadSubCategoryImage, createSubCategoryValidator, createSubCategory)
-  .get(createFilterObject, getSubCategories);
+  .get(createFilterObject, getSubCategoriesValidator, getSubCategories);
 
 router
   .route('/:id')
