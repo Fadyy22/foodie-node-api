@@ -8,6 +8,9 @@
     - [User Endpoints](#user-endpoints)
         - [Signup](#signup)
         - [Login](#login)
+        - [Get User](#get-user)
+        - [Add Collection](#add-collection)
+        - [Delete Collection](#delete-collection)
     - [Category Endpoints](#category-endpoints)
         - [Get All Categories](#get-all-categories)
         - [Get Category](#get-category)
@@ -78,6 +81,55 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `userId`: String
     - `token`: String
 
+#### Get User
+- **URL:** `/users/{id}`
+- **Method:** `GET`
+- **Description:** Gets a user by id.
+- **Response Body:**
+    - `document`: Array with one user object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
+
+#### Add Collection
+- **URL:** `/collections`
+- **Method:** `POST`
+- **Description:** Adds a collection to a user.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `name`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
+
+#### Delete Collection
+- **URL:** `/collections/{id}`
+- **Method:** `DELETE`
+- **Description:** Deletes a collection from a user.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
 
 ### Category Endpoints
 
@@ -164,7 +216,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `description`: String
         - `category`: String
 
-
 #### Get Specific Subcategory
 - **URL:** `/subcategories/{id}`
 - **Method:** `GET`
@@ -175,7 +226,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `name`: String
         - `description`: String
         - `category`: String
-
 
 #### Create Subcategory
 - **URL:** `/subcategories`
@@ -193,7 +243,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `description`: String
         - `category`: String
 
-
 #### Update Subcategory
 - **URL:** `/subcategories/{id}`
 - **Method:** `PUT`
@@ -210,7 +259,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `description`: String
         - `category`: String
 
-
 #### Delete Subcategory
 - **URL:** `/subcategories/{id}`
 - **Method:** `DELETE`
@@ -222,7 +270,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `name`: String
         - `description`: String
         - `category`: String
-
 
 #### Get All Subcategories of a Category
 - **URL:** `/categories/{id}/subcategories`
@@ -254,7 +301,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `category`: String
         - `subcategory`: String
 
-
 #### Get Specific Recipe
 - **URL:** `/recipes/{id}`
 - **Method:** `GET`
@@ -270,7 +316,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `calories`: Number
         - `category`: String
         - `subcategory`: String
-
 
 #### Create Recipe
 - **URL:** `/recipes`
@@ -298,7 +343,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `category`: String
         - `subcategory`: String
 
-
 #### Update Recipe
 - **URL:** `/recipes/{id}`
 - **Method:** `PUT`
@@ -325,7 +369,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `category`: String
         - `subcategory`: String
 
-
 #### Delete Recipe
 - **URL:** `/recipes/{id}`
 - **Method:** `DELETE`
@@ -343,7 +386,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `category`: String
         - `subcategory`: String
 
-
 #### Get All Recipes of a Category
 - **URL:** `/categories/{id}/recipes`
 - **Method:** `GET`
@@ -359,7 +401,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `calories`: Number
         - `category`: String
         - `subcategory`: String
-
 
 #### Get All Recipes of a Subcategory
 - **URL:** `/subcategories/{id}/recipes`
