@@ -1,17 +1,16 @@
 const express = require('express');
 
 const {
-  getUser
+  getUser,
+  addIdToParams
 } = require('../controllers/userController');
 
-const {
-  getUserValidator
-} = require('../utils/validators/userValidator');
+const isAuth = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
 router
-  .route('/:id')
-  .get(getUserValidator, getUser);
+  .route('/')
+  .get(isAuth, addIdToParams, getUser);
 
 module.exports = router;

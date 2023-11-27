@@ -9,7 +9,9 @@
         - [Signup](#signup)
         - [Login](#login)
         - [Get User](#get-user)
-        - [Add Collection](#add-collection)
+        - [Get Collection](#get-collection)
+        - [Create Collection](#create-collection)
+        - [Update Collection](#update-collection)
         - [Delete Collection](#delete-collection)
     - [Category Endpoints](#category-endpoints)
         - [Get All Categories](#get-all-categories)
@@ -82,9 +84,11 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `token`: String
 
 #### Get User
-- **URL:** `/users/{id}`
+- **URL:** `/users`
 - **Method:** `GET`
-- **Description:** Gets a user by id.
+- **Description:** Gets a user.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
 - **Response Body:**
     - `document`: Array with one user object
         - `id`: String
@@ -95,10 +99,42 @@ This is the API for the Forkify application. It is built using Node.js, Express.
             - `name`: String
             - `recipes`: Array of recipe objects
 
-#### Add Collection
+#### Get Collection
+- **URL:** `/collections/{id}`
+- **Method:** `GET`
+- **Description:** Gets a collection from a user.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Response Body:**
+    - `collection`: collection object
+        - `id`: String
+        - `name`: String
+        - `recipes`: Array of recipe objects
+
+#### Create Collection
 - **URL:** `/collections`
 - **Method:** `POST`
 - **Description:** Adds a collection to a user.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `name`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
+
+
+#### Update Collection
+- **URL:** `/collections/{id}`
+- **Method:** `PUT`
+- **Description:** Updates a user's collection.
 - **Request Headers:**
     - `Authorization`: Bearer {jwt token}
 - **Request Body:**
