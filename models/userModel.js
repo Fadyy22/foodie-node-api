@@ -24,7 +24,11 @@ const userSchema = new Schema({
       type: Schema.ObjectId,
       ref: 'Recipe'
     }]
-  }]
+  }],
+  role: {
+    type: String,
+    default: 'user'
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);

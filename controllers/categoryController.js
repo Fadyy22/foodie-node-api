@@ -1,6 +1,6 @@
 const uploadSingleImage = require('../middlewares/uploadImageMiddleware');
 const factory = require('./handlersFactory');
-const Category = require('../models/category');
+const Category = require('../models/categoryModel');
 
 exports.uploadCategoryImage = uploadSingleImage('categories', 'image');
 

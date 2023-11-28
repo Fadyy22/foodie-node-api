@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 const errorHelper = require('../utils/error');
-const User = require('../models/user');
+const User = require('../models/userModel');
 
 exports.createCollection = asyncHandler(async (req, res) => {
   const { name } = req.body;

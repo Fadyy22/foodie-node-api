@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 const factory = require('./handlersFactory');
-const User = require('../models/user');
+const User = require('../models/userModel');
 
 exports.addIdToParams = asyncHandler(async (req, res, next) => {
   if (req.userId) {

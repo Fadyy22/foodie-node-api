@@ -1,6 +1,6 @@
 const uploadSingleImage = require('../middlewares/uploadImageMiddleware');
 const factory = require('./handlersFactory');
-const Recipe = require('../models/recipe');
+const Recipe = require('../models/recipeModel');
 
 exports.createFilterObject = (req, res, next) => {
   let filterObject = {};

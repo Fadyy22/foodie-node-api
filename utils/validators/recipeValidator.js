@@ -1,9 +1,8 @@
 const { check } = require('express-validator');
 
 const validtorMiddleware = require('../../middlewares/validatorMiddleware');
-const Category = require('../../models/category');
-const SubCategory = require('../../models/subCategory');
-const Recipe = require('../../models/recipe');
+const Category = require('../../models/categoryModel');
+const SubCategory = require('../../models/subCategoryModel');
 
 exports.getRecipesValidator = [
   check('categoryId')

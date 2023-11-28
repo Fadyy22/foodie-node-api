@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const errorHelper = require('../utils/error');
-const User = require('../models/user');
+const User = require('../models/userModel');
 
 exports.signup = asyncHandler(async (req, res, next) => {
   const email = req.body.email;
