@@ -1,8 +1,10 @@
+const asyncHandler = require('express-async-handler');
 const jwt = require('jsonwebtoken');
 
 const errorHelper = require('../utils/error');
+const User = require('../models/userModel');
 
-module.exports = (req, res, next) => {
+module.exports = asyncHandler(async (req, res, next) => {
   const authHeader = req.get('Authorization');
   let decodedToken;
 
@@ -15,13 +17,17 @@ module.exports = (req, res, next) => {
   try {
     decodedToken = jwt.verify(token, process.env.JWT_KEY);
   } catch (error) {
-    errorHelper('Internal Server Error', 500, error);
+    errorHelper('Internal Server Error.', 500);
   }
 
   if (!decodedToken) {
     errorHelper('Not authenticated.', 401);
   }
+  const user = await User.findById(decodedToken.userId);
+  if (!user) {
+    errorHelper('user doesn\'t exist.', 404);
+  }
 
-  req.userId = decodedToken.userId;
+  req.user = user;
   next();
-};
+});

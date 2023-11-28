@@ -18,6 +18,9 @@ const {
   deleteSubCategoryValidator
 } = require('../utils/validators/subCategoryValidator');
 
+const isAuth = require('../middlewares/authMiddleware');
+const isAdmin = require('../middlewares/adminMiddleware');
+
 const recipeRoute = require('./recipeRoute');
 
 const router = express.Router({ mergeParams: true });
@@ -26,13 +29,13 @@ router.use('/:subcategoryId/recipes', recipeRoute);
 
 router
   .route('/')
-  .post(uploadSubCategoryImage, createSubCategoryValidator, createSubCategory)
+  .post(isAuth, isAdmin, uploadSubCategoryImage, createSubCategoryValidator, createSubCategory)
   .get(createFilterObject, getSubCategoriesValidator, getSubCategories);
 
 router
   .route('/:id')
   .get(getSubCategoryValidator, getSubCategory)
-  .put(uploadSubCategoryImage, updateSubCategoryValidator, updateSubCategory)
-  .delete(deleteSubCategoryValidator, deleteSubCategory);
+  .put(isAuth, isAdmin, uploadSubCategoryImage, updateSubCategoryValidator, updateSubCategory)
+  .delete(isAuth, isAdmin, deleteSubCategoryValidator, deleteSubCategory);
 
 module.exports = router;
