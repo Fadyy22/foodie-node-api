@@ -30,7 +30,7 @@ exports.updateCollection = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
 
-  const user = await User.findById(req.userId);
+  const user = await User.findById(req.user._id);
 
   const collectionIndex = user.collections.findIndex(collection => { return collection._id.toString() === id });
   if (collectionIndex === -1) {
@@ -45,7 +45,7 @@ exports.updateCollection = asyncHandler(async (req, res) => {
 exports.deleteCollection = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const user = await User.findById(req.userId);
+  const user = await User.findById(req.user._id);
 
   const collectionIndex = user.collections.findIndex(collection => { return collection._id.toString() === id });
   if (collectionIndex === -1) {
