@@ -18,7 +18,12 @@ exports.signup = asyncHandler(async (req, res, next) => {
   });
   const result = await user.save();
 
-  res.status(201).json({ message: 'User created!', userId: result._id });
+  const token = jwt.sign({
+    email: email,
+    userId: user._id
+  }, process.env.JWT_KEY, { expiresIn: '1h' });
+
+  res.status(201).json({ message: 'User created!', userId: result._id, token: token });
 });
 
 exports.login = asyncHandler(async (req, res, next) => {

@@ -70,8 +70,9 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `email`: String
     - `password`: String
 - **Response Body:**
-    - `userId`: String
     - `message`: String
+    - `userId`: String
+    - `token`: String
 
 #### Login
 - **URL:** `/login`
