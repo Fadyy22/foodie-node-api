@@ -5,7 +5,7 @@ const User = require('../models/userModel');
 
 exports.createCollection = asyncHandler(async (req, res) => {
   const { name } = req.body;
-  const user = await User.findById(req.userId);
+  const user = await User.findById(req.user._id);
 
   user.collections.push({ name });
   const newDoc = await user.save();
@@ -15,7 +15,7 @@ exports.createCollection = asyncHandler(async (req, res) => {
 exports.getCollection = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const user = await User.findById(req.userId);
+  const user = await User.findById(req.user._id);
 
   const collectionIndex = user.collections.findIndex(collection => { return collection._id.toString() === id });
   if (collectionIndex === -1) {
