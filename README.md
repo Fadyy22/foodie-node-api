@@ -355,6 +355,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
+        - `vegetarian`: Boolean
+        - `diet`: String
         - `category`: String
         - `subcategory`: String
 
@@ -371,6 +373,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
+        - `vegetarian`: Boolean
+        - `diet`: String
         - `category`: String
         - `subcategory`: String
 
@@ -385,6 +389,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `ingredients`: Array of ingredients
     - `prep_time`: Number
     - `calories`: Number
+    - `vegetarian`: Boolean
+    - `diet`: String
     - `category`: String
     - `subcategory`: String
 - **Response Body:**
@@ -397,6 +403,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
+        - `vegetarian`: Boolean
+        - `diet`: String
         - `category`: String
         - `subcategory`: String
 
@@ -411,6 +419,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `ingredients`: Array of ingredients
     - `prep_time`: Number
     - `calories`: Number
+    - `vegetarian`: Boolean
+    - `diet`: String
     - `category`: String
     - `subcategory`: String
 - **Response Body:**
@@ -423,6 +433,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
+        - `vegetarian`: Boolean
+        - `diet`: String
         - `category`: String
         - `subcategory`: String
 
@@ -440,6 +452,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
+        - `vegetarian`: Boolean
+        - `diet`: String
         - `category`: String
         - `subcategory`: String
 
@@ -456,6 +470,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
+        - `vegetarian`: Boolean
+        - `diet`: String
         - `category`: String
         - `subcategory`: String
 
@@ -472,5 +488,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `ingredients`: Array of ingredients
         - `prep_time`: Number
         - `calories`: Number
+        - `vegetarian`: Boolean
+        - `diet`: String
         - `category`: String
         - `subcategory`: String

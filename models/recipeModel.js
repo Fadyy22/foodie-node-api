@@ -18,12 +18,13 @@ const recipeSchema = new Schema({
     type: String,
     required: true
   }],
-  prep_time: {
-    type: Number,
+  prep_time: Number,
+  calories: Number,
+  vegetarian: {
+    type: Boolean,
+    required: true
   },
-  calories: {
-    type: Number,
-  },
+  diet: String,
   category: {
     type: Schema.ObjectId,
     required: true
