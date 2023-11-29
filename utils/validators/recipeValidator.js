@@ -70,24 +70,6 @@ exports.createRecipeValidator = [
   validtorMiddleware
 ];
 
-exports.addRecipeToCollectionValidator = [
-  check('collectionId')
-    .isMongoId()
-    .withMessage('Invalid collection id format.'),
-  check('recipe')
-    .isMongoId()
-    .withMessage('Invalid recipe id format.')
-    .custom(recipeId => {
-      return Recipe.findById(recipeId).
-        then(recipe => {
-          if (!recipe) {
-            return Promise.reject(new Error('Recipe not found.'));
-          }
-        })
-    }),
-  validtorMiddleware
-];
-
 exports.updateRecipeValidator = [
   check('id')
     .isMongoId()
@@ -146,5 +128,41 @@ exports.deleteRecipeValidator = [
   check('id')
     .isMongoId()
     .withMessage('Invalid recipe id format.'),
+  validtorMiddleware
+];
+
+exports.addRecipeToCollectionValidator = [
+  check('collectionId')
+    .isMongoId()
+    .withMessage('Invalid collection id format.'),
+  check('recipe')
+    .isMongoId()
+    .withMessage('Invalid recipe id format.')
+    .custom(recipeId => {
+      return Recipe.findById(recipeId).
+        then(recipe => {
+          if (!recipe) {
+            return Promise.reject(new Error('Recipe not found.'));
+          }
+        })
+    }),
+  validtorMiddleware
+];
+
+exports.deleteRecipeFromCollectionValidator = [
+  check('collectionId')
+    .isMongoId()
+    .withMessage('Invalid collection id format.'),
+  check('recipe')
+    .isMongoId()
+    .withMessage('Invalid recipe id format.')
+    .custom(recipeId => {
+      return Recipe.findById(recipeId).
+        then(recipe => {
+          if (!recipe) {
+            return Promise.reject(new Error('Recipe not found.'));
+          }
+        })
+    }),
   validtorMiddleware
 ];

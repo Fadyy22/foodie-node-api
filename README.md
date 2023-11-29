@@ -14,6 +14,7 @@
         - [Update Collection](#update-collection)
         - [Delete Collection](#delete-collection)
         - [Add Recipe to Collection](#add-recipe-to-collection)
+        - [Delete Recipe from Collection](#delete-recipe-from-collection)
     - [Category Endpoints](#category-endpoints)
         - [Get All Categories](#get-all-categories)
         - [Get Category](#get-category)
@@ -187,6 +188,26 @@ This is the API for the Forkify application. It is built using Node.js, Express.
             - `id`: String
             - `name`: String
             - `recipes`: Array of recipe objects
+
+#### Delete Recipe from Collection
+- **URL:** `/collections/{id}/recipes`
+- **Method:** `DELETE`
+- **Description:** Deletes a recipe from a user's collection.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `recipe`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
+
 
 ### Category Endpoints
 

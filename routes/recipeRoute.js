@@ -7,6 +7,7 @@ const {
   updateRecipe,
   deleteRecipe,
   addRecipeToCollection,
+  deleteRecipeFromCollection,
   uploadRecipeImage,
   createFilterObject
 } = require('../controllers/recipeController');
@@ -15,9 +16,10 @@ const {
   createRecipeValidator,
   getRecipesValidator,
   getRecipeValidator,
-  addRecipeToCollectionValidator,
   updateRecipeValidator,
-  deleteRecipeValidator
+  deleteRecipeValidator,
+  addRecipeToCollectionValidator,
+  deleteRecipeFromCollectionValidator
 } = require('../utils/validators/recipeValidator');
 
 const isAuth = require('../middlewares/authMiddleware');
@@ -29,7 +31,8 @@ router
   .route('/')
   .post(isAuth, isAdmin, uploadRecipeImage, createRecipeValidator, createRecipe)
   .get(createFilterObject, getRecipesValidator, getRecipes)
-  .put(isAuth, addRecipeToCollectionValidator, addRecipeToCollection);
+  .put(isAuth, addRecipeToCollectionValidator, addRecipeToCollection)
+  .delete(isAuth, deleteRecipeFromCollectionValidator, deleteRecipeFromCollection);
 
 router
   .route('/:id')
