@@ -17,17 +17,11 @@ module.exports = asyncHandler(async (req, res, next) => {
   try {
     decodedToken = jwt.verify(token, process.env.JWT_KEY);
   } catch (error) {
-    return res.status(500).json({
-      error: error,
-    })
+    errorHelper('Not authenticated.', 401);
   }
 
   if (!decodedToken) {
-    return res.status(401).json({
-      error: {
-        message: 'Not authenticated.'
-      }
-    })
+    errorHelper('Not authenticated.', 401);
   }
   const user = await User.findById(decodedToken.userId);
   if (!user) {

@@ -14,9 +14,14 @@ const {
   deleteCollectionValidator
 } = require('../utils/validators/collectionValidator');
 
+const recipeRoute = require('./recipeRoute');
+
 const isAuth = require('../middlewares/authMiddleware');
 
 const router = express.Router();
+
+router
+  .use('/:collectionId/recipes', recipeRoute);
 
 router
   .route('/')

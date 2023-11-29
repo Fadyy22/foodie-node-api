@@ -15,7 +15,10 @@ exports.createCollection = asyncHandler(async (req, res) => {
 exports.getCollection = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user._id).populate({
+    path: 'collections',
+    populate: 'recipes'
+  });
 
   const collectionIndex = user.collections.findIndex(collection => { return collection._id.toString() === id });
   if (collectionIndex === -1) {
