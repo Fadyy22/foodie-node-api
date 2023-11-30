@@ -5,9 +5,6 @@ const Category = require('../../models/categoryModel');
 const SubCategory = require('../../models/subCategoryModel');
 const Recipe = require('../../models/recipeModel');
 
-
-let category;
-
 exports.getRecipesValidator = [
   check('categoryId')
     .optional()
@@ -51,7 +48,6 @@ exports.createRecipeValidator = [
     .isMongoId()
     .withMessage('Invalid category id format.')
     .custom(categoryId => {
-      category = categoryId;
       return Category.findById(categoryId).
         then(category => {
           if (!category) {
@@ -69,7 +65,7 @@ exports.createRecipeValidator = [
           if (!subcategory) {
             return Promise.reject(new Error('Subcategory not found.'));
           }
-          if (subcategory.category.toString() !== category.toString()) {
+          if (subcategory.category.toString() !== req.body.category) {
             return Promise.reject(new Error('Subcategory does\'t exist in this category.'));
           }
         })
