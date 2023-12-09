@@ -20,8 +20,15 @@ exports.createOne = Model => asyncHandler(async (req, res) => {
 });
 
 exports.getAll = Model => asyncHandler(async (req, res) => {
-  // const filter = (req.params.categoryId) ? { category: req.params.categoryId } : {};
-  const documents = await Model.find(req.filterObject);
+  let query = {};
+  if (req.query.search) {
+    query.$or = [
+      { title: { $regex: req.query.search, $options: 'i' } },
+      { description: { $regex: req.query.search, $options: 'i' } },
+      { ingredients: { $regex: req.query.search, $options: 'i' } },
+    ]
+  }
+  const documents = await Model.find(query).find(req.filterObject);
 
   res.status(200).json({ documents: documents });
 });

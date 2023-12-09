@@ -5,16 +5,11 @@
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
 3. [API Endpoints](#api-endpoints)
-    - [User Endpoints](#user-endpoints)
+    - [Authentication](#authentication)
         - [Signup](#signup)
         - [Login](#login)
+    - [User Endpoints](#user-endpoints)
         - [Get User](#get-user)
-        - [Get Collection](#get-collection)
-        - [Create Collection](#create-collection)
-        - [Update Collection](#update-collection)
-        - [Delete Collection](#delete-collection)
-        - [Add Recipe to Collection](#add-recipe-to-collection)
-        - [Delete Recipe from Collection](#delete-recipe-from-collection)
     - [Category Endpoints](#category-endpoints)
         - [Get All Categories](#get-all-categories)
         - [Get Category](#get-category)
@@ -36,6 +31,13 @@
         - [Delete Recipe](#delete-recipe)
         - [Get All Recipes of a Category](#get-all-recipes-of-a-category)
         - [Get All Recipes of a Subcategory](#get-all-recipes-of-a-subcategory)
+    - [Collection Endpoints](#collection-endpoints)
+        - [Get Collection](#get-collection)
+        - [Create Collection](#create-collection)
+        - [Update Collection](#update-collection)
+        - [Delete Collection](#delete-collection)
+        - [Add Recipe to Collection](#add-recipe-to-collection)
+        - [Delete Recipe from Collection](#delete-recipe-from-collection)
 
 ---
 ## Introduction
@@ -60,7 +62,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
 
 ---
 ## API Endpoints
-### User Endpoints
+
+### Authentication
 
 #### Signup
 - **URL:** `/signup`
@@ -86,6 +89,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `userId`: String
     - `token`: String
 
+### User Endpoints
+
 #### Get User
 - **URL:** `/users`
 - **Method:** `GET`
@@ -94,112 +99,6 @@ This is the API for the Forkify application. It is built using Node.js, Express.
     - `Authorization`: Bearer {jwt token}
 - **Response Body:**
     - `document`: Array with one user object
-        - `id`: String
-        - `name`: String
-        - `email`: String
-        - `collections`: Array of collection objects
-            - `id`: String
-            - `name`: String
-            - `recipes`: Array of recipe objects
-
-#### Get Collection
-- **URL:** `/collections/{id}`
-- **Method:** `GET`
-- **Description:** Gets a collection from a user.
-- **Request Headers:**
-    - `Authorization`: Bearer {jwt token}
-- **Response Body:**
-    - `collection`: collection object
-        - `id`: String
-        - `name`: String
-        - `recipes`: Array of recipe objects
-
-#### Create Collection
-- **URL:** `/collections`
-- **Method:** `POST`
-- **Description:** Adds a collection to a user.
-- **Request Headers:**
-    - `Authorization`: Bearer {jwt token}
-- **Request Body:**
-    - `name`: String
-- **Response Body:**
-    - `message`: String
-    - `document`: User object
-        - `id`: String
-        - `name`: String
-        - `email`: String
-        - `collections`: Array of collection objects
-            - `id`: String
-            - `name`: String
-            - `recipes`: Array of recipe objects
-
-
-#### Update Collection
-- **URL:** `/collections/{id}`
-- **Method:** `PUT`
-- **Description:** Updates a user's collection.
-- **Request Headers:**
-    - `Authorization`: Bearer {jwt token}
-- **Request Body:**
-    - `name`: String
-- **Response Body:**
-    - `message`: String
-    - `document`: User object
-        - `id`: String
-        - `name`: String
-        - `email`: String
-        - `collections`: Array of collection objects
-            - `id`: String
-            - `name`: String
-            - `recipes`: Array of recipe objects
-
-#### Delete Collection
-- **URL:** `/collections/{id}`
-- **Method:** `DELETE`
-- **Description:** Deletes a collection from a user.
-- **Request Headers:**
-    - `Authorization`: Bearer {jwt token}
-- **Response Body:**
-    - `message`: String
-    - `document`: User object
-        - `id`: String
-        - `name`: String
-        - `email`: String
-        - `collections`: Array of collection objects
-            - `id`: String
-            - `name`: String
-            - `recipes`: Array of recipe objects
-
-#### Add Recipe to Collection
-- **URL:** `/collections/{id}/recipes`
-- **Method:** `PUT`
-- **Description:** Adds a recipe to a user's collection.
-- **Request Headers:**
-    - `Authorization`: Bearer {jwt token}
-- **Request Body:**
-    - `recipe`: String
-- **Response Body:**
-    - `message`: String
-    - `document`: User object
-        - `id`: String
-        - `name`: String
-        - `email`: String
-        - `collections`: Array of collection objects
-            - `id`: String
-            - `name`: String
-            - `recipes`: Array of recipe objects
-
-#### Delete Recipe from Collection
-- **URL:** `/collections/{id}/recipes`
-- **Method:** `DELETE`
-- **Description:** Deletes a recipe from a user's collection.
-- **Request Headers:**
-    - `Authorization`: Bearer {jwt token}
-- **Request Body:**
-    - `recipe`: String
-- **Response Body:**
-    - `message`: String
-    - `document`: User object
         - `id`: String
         - `name`: String
         - `email`: String
@@ -513,3 +412,112 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `diet`: String
         - `category`: String
         - `subcategory`: String
+
+
+### Collection Endpoints
+
+#### Get Collection
+- **URL:** `/collections/{id}`
+- **Method:** `GET`
+- **Description:** Gets a collection from a user.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Response Body:**
+    - `collection`: collection object
+        - `id`: String
+        - `name`: String
+        - `recipes`: Array of recipe objects
+
+#### Create Collection
+- **URL:** `/collections`
+- **Method:** `POST`
+- **Description:** Adds a collection to a user.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `name`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
+
+
+#### Update Collection
+- **URL:** `/collections/{id}`
+- **Method:** `PUT`
+- **Description:** Updates a user's collection.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `name`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
+
+#### Delete Collection
+- **URL:** `/collections/{id}`
+- **Method:** `DELETE`
+- **Description:** Deletes a collection from a user.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
+
+#### Add Recipe to Collection
+- **URL:** `/collections/{id}/recipes`
+- **Method:** `PUT`
+- **Description:** Adds a recipe to a user's collection.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `recipe`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects
+
+#### Delete Recipe from Collection
+- **URL:** `/collections/{id}/recipes`
+- **Method:** `DELETE`
+- **Description:** Deletes a recipe from a user's collection.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `recipe`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: User object
+        - `id`: String
+        - `name`: String
+        - `email`: String
+        - `collections`: Array of collection objects
+            - `id`: String
+            - `name`: String
+            - `recipes`: Array of recipe objects

@@ -21,7 +21,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
   const token = jwt.sign({
     email: email,
     userId: user._id
-  }, process.env.JWT_KEY, { expiresIn: '1h' });
+  }, process.env.JWT_KEY, { expiresIn: process.env.JWT_EXPIRE_TIME });
 
   res.status(201).json({ message: 'User created!', userId: result._id, token: token });
 });
@@ -43,7 +43,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   const token = jwt.sign({
     email: email,
     userId: user._id
-  }, process.env.JWT_KEY, { expiresIn: '1h' });
+  }, process.env.JWT_KEY, { expiresIn: process.env.JWT_EXPIRE_TIME });
 
   res.status(200).json({
     token: token,
