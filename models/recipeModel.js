@@ -25,6 +25,15 @@ const recipeSchema = new Schema({
     required: true
   },
   diet: String,
+  ratingsAverage: {
+    type: Number,
+    min: 1,
+    max: 5
+  },
+  ratingsQunatity: {
+    type: Number,
+    default: 0
+  },
   category: {
     type: Schema.ObjectId,
     ref: 'Category',
@@ -35,8 +44,16 @@ const recipeSchema = new Schema({
     ref: 'SubCategory',
     required: true
   }
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 });
 
+recipeSchema.virtual('reviews', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'recipe'
+});
 
 recipeSchema.pre(/^find/, async function (next) {
   this.populate({

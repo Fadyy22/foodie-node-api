@@ -38,6 +38,14 @@
         - [Delete Collection](#delete-collection)
         - [Add Recipe to Collection](#add-recipe-to-collection)
         - [Delete Recipe from Collection](#delete-recipe-from-collection)
+    - [Review Endpoints](#review-endpoints)
+        - [Get All Reviews](#get-all-reviews)
+        - [Get Review](#get-review)
+        - [Create Review](#create-review)
+        - [Update Review](#update-review)
+        - [Delete Review](#delete-review)
+        <!-- - [Get All Reviews of a Recipe](#get-all-reviews-of-a-recipe)
+        - [Get All Reviews of a User](#get-all-reviews-of-a-user) -->
 
 ---
 ## Introduction
@@ -277,8 +285,14 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
-        - `category`: String
-        - `subcategory`: String
+        - `category`: Category object
+            - `id`: String
+            - `name`: String
+            - `description`: String
+        - `subcategory`: Subcategory object
+            - `id`: String
+            - `name`: String
+            - `description`: String
 
 #### Get Specific Recipe
 - **URL:** `/recipes/{id}`
@@ -295,8 +309,22 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
-        - `category`: String
-        - `subcategory`: String
+        - `category`: Category object
+            - `id`: String
+            - `name`: String
+            - `description`: String
+        - `subcategory`: Subcategory object
+            - `id`: String
+            - `name`: String
+            - `description`: String
+        - `reviews`: Array of review objects
+            - `id`: String
+            - `title`: String
+            - `rating`: Number
+            - `recipe`: String
+            - `user`: User object
+                - `id`: String
+                - `name`: String
 
 #### Create Recipe
 - **URL:** `/recipes`
@@ -521,3 +549,89 @@ This is the API for the Forkify application. It is built using Node.js, Express.
             - `id`: String
             - `name`: String
             - `recipes`: Array of recipe objects
+
+
+### Review Endpoints
+
+#### Get All Reviews
+- **URL:** `/reviews`
+- **Method:** `GET`
+- **Description:** Gets all reviews.
+- **Response Body:**
+    - `documents`: Array of review objects
+        - `id`: String
+        - `title`: String
+        - `rating`: Number
+        - `recipe`: String
+        - `user`: User object
+            - `id`: String
+            - `name`: String
+
+#### Get Specific Review
+- **URL:** `/reviews/{id}`
+- **Method:** `GET`
+- **Description:** Gets a review by id.
+- **Response Body:**
+    - `document`: Array with one review object
+        - `id`: String
+        - `title`: String
+        - `rating`: Number
+        - `recipe`: String
+        - `user`: User object
+            - `id`: String
+            - `name`: String
+
+#### Create Review
+- **URL:** `/reviews`
+- **Method:** `POST`
+- **Description:** Creates a new review.
+- **Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `title`: String
+    - `rating`: Number
+    - `recipe`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: Object
+        - `id`: String
+        - `title`: String
+        - `rating`: Number
+        - `recipe`: String
+        - `user`: String
+
+
+#### Update Review
+- **URL:** `/reviews/{id}`
+- **Method:** `PUT`
+- **Description:** Updates a review by id.
+- **Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Request Body:**
+    - `title`: String
+    - `rating`: Number
+    - `recipe`: String
+- **Response Body:**
+    - `message`: String
+    - `document`: Object
+        - `id`: String
+        - `title`: String
+        - `rating`: Number
+        - `recipe`: String
+        - `user`: String
+
+
+#### Delete Review
+- **URL:** `/reviews/{id}`
+- **Method:** `DELETE`
+- **Description:** Deletes a review by id.
+- **Headers:**
+    - `Authorization`: Bearer {jwt token}
+- **Response Body:**
+    - `message`: String
+    - `document`: Object
+        - `id`: String
+        - `title`: String
+        - `rating`: Number
+        - `recipe`: String
+        - `user`: String

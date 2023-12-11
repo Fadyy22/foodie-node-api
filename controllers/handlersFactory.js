@@ -41,8 +41,14 @@ exports.getAll = Model => asyncHandler(async (req, res) => {
   res.status(200).json({ documents: filteredDocuments || documents });
 });
 
-exports.getOne = Model => asyncHandler(async (req, res) => {
-  const document = await Model.findById(req.params.id);
+exports.getOne = (Model, populateOpt) => asyncHandler(async (req, res) => {
+  let query = Model.findById(req.params.id);
+
+  if (populateOpt) {
+    query = query.populate(populateOpt);
+  }
+
+  const document = await query;
   if (!document) {
     errorHelper('document not found.', 404);
   }

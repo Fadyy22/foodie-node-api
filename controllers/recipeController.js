@@ -23,7 +23,7 @@ exports.createRecipe = factory.createOne(Recipe);
 
 exports.getRecipes = factory.getAll(Recipe);
 
-exports.getRecipe = factory.getOne(Recipe);
+exports.getRecipe = factory.getOne(Recipe, 'reviews');
 
 exports.updateRecipe = factory.updateOne(Recipe);
 
