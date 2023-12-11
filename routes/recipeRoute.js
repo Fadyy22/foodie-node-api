@@ -23,13 +23,13 @@ const {
 } = require('../utils/validators/recipeValidator');
 
 const isAuth = require('../middlewares/authMiddleware');
-const isAdmin = require('../middlewares/adminMiddleware');
+const allowedTo = require('../middlewares/allowedToMiddleware');
 
 const router = express.Router({ mergeParams: true });
 
 router
   .route('/')
-  .post(isAuth, isAdmin, uploadRecipeImage, createRecipeValidator, createRecipe)
+  .post(isAuth, allowedTo('admin'), uploadRecipeImage, createRecipeValidator, createRecipe)
   .get(createFilterObject, getRecipesValidator, getRecipes)
   .put(isAuth, addRecipeToCollectionValidator, addRecipeToCollection)
   .delete(isAuth, deleteRecipeFromCollectionValidator, deleteRecipeFromCollection);
@@ -37,7 +37,7 @@ router
 router
   .route('/:id')
   .get(getRecipeValidator, getRecipe)
-  .put(isAuth, isAdmin, uploadRecipeImage, updateRecipeValidator, updateRecipe)
-  .delete(isAuth, isAdmin, deleteRecipeValidator, deleteRecipe);
+  .put(isAuth, allowedTo('admin'), uploadRecipeImage, updateRecipeValidator, updateRecipe)
+  .delete(isAuth, allowedTo('admin'), deleteRecipeValidator, deleteRecipe);
 
 module.exports = router;

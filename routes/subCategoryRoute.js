@@ -19,7 +19,7 @@ const {
 } = require('../utils/validators/subCategoryValidator');
 
 const isAuth = require('../middlewares/authMiddleware');
-const isAdmin = require('../middlewares/adminMiddleware');
+const allowedTo = require('../middlewares/allowedToMiddleware');
 
 const recipeRoute = require('./recipeRoute');
 
@@ -29,13 +29,13 @@ router.use('/:subcategoryId/recipes', recipeRoute);
 
 router
   .route('/')
-  .post(isAuth, isAdmin, uploadSubCategoryImage, createSubCategoryValidator, createSubCategory)
+  .post(isAuth, allowedTo('admin'), uploadSubCategoryImage, createSubCategoryValidator, createSubCategory)
   .get(createFilterObject, getSubCategoriesValidator, getSubCategories);
 
 router
   .route('/:id')
   .get(getSubCategoryValidator, getSubCategory)
-  .put(isAuth, isAdmin, uploadSubCategoryImage, updateSubCategoryValidator, updateSubCategory)
-  .delete(isAuth, isAdmin, deleteSubCategoryValidator, deleteSubCategory);
+  .put(isAuth, allowedTo('admin'), uploadSubCategoryImage, updateSubCategoryValidator, updateSubCategory)
+  .delete(isAuth, allowedTo('admin'), deleteSubCategoryValidator, deleteSubCategory);
 
 module.exports = router;
