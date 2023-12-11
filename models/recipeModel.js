@@ -27,12 +27,23 @@ const recipeSchema = new Schema({
   diet: String,
   category: {
     type: Schema.ObjectId,
+    ref: 'Category',
     required: true
   },
   subcategory: {
     type: Schema.ObjectId,
+    ref: 'SubCategory',
     required: true
   }
+});
+
+
+recipeSchema.pre(/^find/, async function (next) {
+  this.populate({
+    path: 'category subcategory',
+    select: 'name description'
+  });
+  next();
 });
 
 module.exports = mongoose.model('Recipe', recipeSchema);

@@ -59,7 +59,7 @@ exports.createRecipeValidator = [
   check('subcategory')
     .isMongoId()
     .withMessage('Invalid subcategory id format.')
-    .custom(subCategoryId => {
+    .custom((subCategoryId, { req }) => {
       return SubCategory.findById(subCategoryId).
         then(subcategory => {
           if (!subcategory) {
