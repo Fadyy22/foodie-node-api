@@ -291,6 +291,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
+        - `ratingsAverage`: Number
+        - `ratingsQuantity`: Number
         - `category`: Category object
             - `id`: String
             - `name`: String
@@ -315,6 +317,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
+        - `ratingsAverage`: Number
+        - `ratingsQuantity`: Number
         - `category`: Category object
             - `id`: String
             - `name`: String
@@ -359,6 +363,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
+        - `ratingsAverage`: Number
+        - `ratingsQuantity`: Number
         - `category`: String
         - `subcategory`: String
 
@@ -389,6 +395,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
+        - `ratingsAverage`: Number
+        - `ratingsQuantity`: Number
         - `category`: String
         - `subcategory`: String
 
@@ -408,6 +416,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
+        - `ratingsAverage`: Number
+        - `ratingsQuantity`: Number
         - `category`: String
         - `subcategory`: String
 
@@ -426,6 +436,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
+        - `ratingsAverage`: Number
+        - `ratingsQuantity`: Number
         - `category`: String
         - `subcategory`: String
 
@@ -444,6 +456,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `calories`: Number
         - `vegetarian`: Boolean
         - `diet`: String
+        - `ratingsAverage`: Number
+        - `ratingsQuantity`: Number
         - `category`: String
         - `subcategory`: String
 
