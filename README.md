@@ -58,9 +58,9 @@ This is the API for the Fooide application. It is built using Node.js, Express.j
 
 ### Installation
 1. Clone the repository
-```git clone https://github/Fadyy22/forkify_node_api.git```
+```git clone https://github/Fadyy22/foodie_node_api.git```
 2. Navigate to the project directory
-```cd forkify_node_api```
+```cd foodie_node_api```
 3. Install dependencies
 ```npm install```
 4. Create a config.env file in the root directory and add the following:
