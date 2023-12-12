@@ -127,6 +127,8 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `id`: String
         - `name`: String
         - `description`: String
+        - `image`: String
+        - `subcategories`: Array of subcategory objects
 
 #### Get Specific Category
 - **URL:** `/categories/{id}`
@@ -137,6 +139,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `id`: String
         - `name`: String
         - `description`: String
+        - `image`: String
 
 #### Create Category
 - **URL:** `/categories`
@@ -154,6 +157,7 @@ This is the API for the Forkify application. It is built using Node.js, Express.
         - `id`: String
         - `name`: String
         - `description`: String
+        - `image`: String
 
 #### Update Category
 - **URL:** `/categories/{id}`

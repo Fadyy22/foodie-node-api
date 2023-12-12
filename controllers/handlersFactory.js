@@ -19,10 +19,14 @@ exports.createOne = Model => asyncHandler(async (req, res) => {
   });
 });
 
-exports.getAll = Model => asyncHandler(async (req, res) => {
+exports.getAll = (Model, populateOpt) => asyncHandler(async (req, res) => {
   let filteredDocuments;
+  let query = Model.find(req.filterObject);
 
-  const documents = await Model.find(req.filterObject);
+  if (populateOpt) {
+    query = query.populate({ path: populateOpt, select: 'name  -category' });
+  }
+  const documents = await query;
 
   if (req.query.search) {
     filteredDocuments = documents.filter(doc => {

@@ -6,7 +6,7 @@ exports.uploadCategoryImage = uploadSingleImage('categories', 'image');
 
 exports.createCategory = factory.createOne(Category);
 
-exports.getCategories = factory.getAll(Category);
+exports.getCategories = factory.getAll(Category, 'subcategories');
 
 exports.getCategory = factory.getOne(Category);
 
