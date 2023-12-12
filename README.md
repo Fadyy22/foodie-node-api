@@ -46,6 +46,7 @@
         - [Delete Review](#delete-review)
         <!-- - [Get All Reviews of a Recipe](#get-all-reviews-of-a-recipe)
         - [Get All Reviews of a User](#get-all-reviews-of-a-user) -->
+4. [Contributors](#contributors)
 
 ---
 ## Introduction
@@ -639,3 +640,7 @@ This is the API for the Fooide application. It is built using Node.js, Express.j
         - `rating`: Number
         - `recipe`: String
         - `user`: String
+
+---
+## Contributors
+- [Fady Alaa](https://www.linkedin.com/in/fady-alaa/) - Software Engineer
