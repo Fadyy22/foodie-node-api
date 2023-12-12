@@ -49,7 +49,7 @@
 
 ---
 ## Introduction
-This is the API for the Forkify application. It is built using Node.js, Express.js, and MongoDB.
+This is the API for the Fooide application. It is built using Node.js, Express.js, and MongoDB.
 
 ---
 ## Getting Started
