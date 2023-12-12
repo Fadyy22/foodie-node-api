@@ -30,7 +30,7 @@ const recipeSchema = new Schema({
     min: 1,
     max: 5
   },
-  ratingsQunatity: {
+  ratingsQuantity: {
     type: Number,
     default: 0
   },

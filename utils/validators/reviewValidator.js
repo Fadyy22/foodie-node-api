@@ -90,7 +90,7 @@ exports.deleteReviewValidator = [
             if (!review) {
               return Promise.reject(new Error('document not found.'));
             }
-            if (review.user.toString() !== req.user._id.toString()) {
+            if (review.user._id.toString() !== req.user._id.toString()) {
               return Promise.reject(new Error('You are not allowed to perfom this action.'));
             }
           })

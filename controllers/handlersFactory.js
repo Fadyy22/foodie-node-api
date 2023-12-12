@@ -78,8 +78,10 @@ exports.updateOne = Model => asyncHandler(async (req, res) => {
   if (req.body.image && document.image) {
     deleteImageHelper(document.image);
   }
-
   const newDocument = await Model.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
+  // Trigger "save" event
+  newDocument.save()
 
   res.status(200).json({ message: 'document updated!', document: newDocument });
 });
