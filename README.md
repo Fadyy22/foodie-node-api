@@ -50,7 +50,7 @@
 
 ---
 ## Introduction
-This is the API for the Fooide application. It is built using Node.js, Express.js, and MongoDB.
+This is the API for the Fooide application. It is built using Node.js, Express.js, and MongoDB.   
 Foodie api is a RESTful API that allows users to create, read, update, and delete recipes, categories, subcategories, collections of his favorite recipes, reviews on recipes. It also allows users to signup and login using JWT authentication, and authorize them to perform certain actions restricted to users with admin privileges.
 
 ---
