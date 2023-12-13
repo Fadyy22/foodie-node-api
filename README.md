@@ -132,7 +132,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `image`: String
         - `subcategories`: Array of subcategory objects
 
-#### Get Specific Category
+#### Get Category
 - **URL:** `/categories/{id}`
 - **Method:** `GET`
 - **Description:** Gets a category by id.
@@ -207,7 +207,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `description`: String
         - `category`: String
 
-#### Get Specific Subcategory
+#### Get Subcategory
 - **URL:** `/subcategories/{id}`
 - **Method:** `GET`
 - **Description:** Gets a subcategory by id.
@@ -302,7 +302,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
             - `name`: String
             - `description`: String
 
-#### Get Specific Recipe
+#### Get Recipe
 - **URL:** `/recipes/{id}`
 - **Method:** `GET`
 - **Description:** Gets a recipe by id.
@@ -587,7 +587,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
             - `id`: String
             - `name`: String
 
-#### Get Specific Review
+#### Get Review
 - **URL:** `/reviews/{id}`
 - **Method:** `GET`
 - **Description:** Gets a review by id.
