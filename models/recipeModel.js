@@ -67,12 +67,4 @@ recipeSchema.virtual('reviews', {
   foreignField: 'recipe'
 });
 
-recipeSchema.pre(/^find/, async function (next) {
-  this.populate({
-    path: 'category subcategory',
-    select: 'name description'
-  });
-  next();
-});
-
 module.exports = mongoose.model('Recipe', recipeSchema);
