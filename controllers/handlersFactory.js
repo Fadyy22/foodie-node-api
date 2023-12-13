@@ -20,27 +20,27 @@ exports.createOne = Model => asyncHandler(async (req, res) => {
 });
 
 exports.getAll = (Model, populateOpt) => asyncHandler(async (req, res) => {
-  let filteredDocuments;
+  let searchQuery = {};
   let query = Model.find(req.filterObject);
 
   if (populateOpt) {
     query = query.populate({ path: populateOpt, select: 'name  -category' });
   }
-  const documents = await query;
 
   if (req.query.search) {
-    filteredDocuments = documents.filter(doc => {
-      return (
-        doc.name.match(new RegExp(req.query.search, 'i')) ||
-        doc.description.match(new RegExp(req.query.search, 'i')) ||
-        doc.ingredients.some(ingredient => ingredient.match(new RegExp(req.query.search, 'i'))) ||
-        doc.category.name.match(new RegExp(req.query.search, 'i')) ||
-        doc.subcategory.name.match(new RegExp(req.query.search, 'i'))
-      );
-    });
+    searchQuery.$or = [
+      { name: { $regex: req.query.search, $options: 'i' } },
+      { description: { $regex: req.query.search, $options: 'i' } },
+      { ingredients: { $regex: req.query.search, $options: 'i' } },
+      { 'category.name': { $regex: req.query.search, $options: 'i' } },
+      { 'subcategory.name': { $regex: req.query.search, $options: 'i' } },
+    ];
+    query = query.find(searchQuery);
   }
 
-  res.status(200).json({ documents: filteredDocuments || documents });
+  const documents = await query;
+
+  res.status(200).json({ documents: documents });
 });
 
 exports.getOne = (Model, populateOpt) => asyncHandler(async (req, res) => {

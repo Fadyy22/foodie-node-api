@@ -9,9 +9,9 @@ const Recipe = require('../models/recipeModel');
 exports.createFilterObject = (req, res, next) => {
   let filterObject = {};
   if (req.params.categoryId) {
-    filterObject = { category: req.params.categoryId };
+    filterObject = { 'category._id': req.params.categoryId };
   } else if (req.params.subcategoryId) {
-    filterObject = { subcategory: req.params.subcategoryId };
+    filterObject = { 'subcategory._id': req.params.subcategoryId };
   }
   req.filterObject = filterObject;
   next();

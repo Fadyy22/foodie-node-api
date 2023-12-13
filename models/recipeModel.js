@@ -35,14 +35,26 @@ const recipeSchema = new Schema({
     default: 0
   },
   category: {
-    type: Schema.ObjectId,
-    ref: 'Category',
-    required: true
+    _id: {
+      type: Schema.ObjectId,
+      ref: 'Category',
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
   },
   subcategory: {
-    type: Schema.ObjectId,
-    ref: 'SubCategory',
-    required: true
+    _id: {
+      type: Schema.ObjectId,
+      ref: 'SubCategory',
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
   }
 }, {
   toJSON: { virtuals: true },

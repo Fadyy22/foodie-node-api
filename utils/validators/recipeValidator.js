@@ -47,11 +47,20 @@ exports.createRecipeValidator = [
   check('category')
     .isMongoId()
     .withMessage('Invalid category id format.')
-    .custom(categoryId => {
+    .custom((categoryId, { req }) => {
       return Category.findById(categoryId).
         then(category => {
           if (!category) {
             return Promise.reject(new Error('Category not found.'));
+          }
+        })
+    })
+    .customSanitizer(categoryId => {
+      return Category.findById(categoryId).
+        then(category => {
+          return {
+            _id: categoryId,
+            name: category.name
           }
         })
     })
@@ -65,8 +74,17 @@ exports.createRecipeValidator = [
           if (!subcategory) {
             return Promise.reject(new Error('Subcategory not found.'));
           }
-          if (subcategory.category.toString() !== req.body.category) {
+          if (subcategory.category.toString() !== req.body.category._id) {
             return Promise.reject(new Error('Subcategory does\'t exist in this category.'));
+          }
+        })
+    })
+    .customSanitizer(subCategoryId => {
+      return SubCategory.findById(subCategoryId).
+        then(subcategory => {
+          return {
+            _id: subCategoryId,
+            name: subcategory.name
           }
         })
     }),
@@ -111,7 +129,15 @@ exports.updateRecipeValidator = [
           }
         })
     })
-  ,
+    .customSanitizer(categoryId => {
+      return Category.findById(categoryId).
+        then(category => {
+          return {
+            _id: categoryId,
+            name: category.name
+          }
+        })
+    }),
   check('subcategory')
     .optional()
     .isMongoId()
@@ -121,6 +147,15 @@ exports.updateRecipeValidator = [
         then(subcategory => {
           if (!subcategory) {
             return Promise.reject(new Error('Subcategory not found.'));
+          }
+        })
+    })
+    .customSanitizer(subCategoryId => {
+      return SubCategory.findById(subCategoryId).
+        then(subcategory => {
+          return {
+            _id: subCategoryId,
+            name: subcategory.name
           }
         })
     }),
