@@ -44,6 +44,7 @@
         - [Create Review](#create-review)
         - [Update Review](#update-review)
         - [Delete Review](#delete-review)
+    - [Search Endpoints](#search-endpoints)
         <!-- - [Get All Reviews of a Recipe](#get-all-reviews-of-a-recipe)
         - [Get All Reviews of a User](#get-all-reviews-of-a-user) -->
 4. [Contributors](#contributors)
@@ -116,6 +117,16 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
             - `id`: String
             - `name`: String
             - `recipes`: Array of recipe objects
+        - `reviews`: Array of review objects
+            - `id`: String
+            - `title`: String
+            - `rating`: Number
+            - `recipe`: Recipe object
+                - `id`: String
+                - `name`: String
+            - `user`: User object
+                - `id`: String
+                - `name`: String
 
 
 ### Category Endpoints
@@ -656,6 +667,34 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `recipe`: String
         - `user`: String
 
+
+### Search Endpoints
+
+#### Search Recipes
+- **URL:** `/recipes?search={query}`
+- **Method:** `GET`
+- **Description:** Searches for recipes by keyword.
+- **Response Body:**
+    - `documents`: Array of recipe objects
+        - `id`: String
+        - `name`: String
+        - `description`: String
+        - `image`: String
+        - `ingredients`: Array of ingredients
+        - `prep_time`: Number
+        - `calories`: Number
+        - `vegetarian`: Boolean
+        - `diet`: String
+        - `ratingsAverage`: Number
+        - `ratingsQuantity`: Number
+        - `category`: Array of category objects
+            - `id`: String
+            - `name`: String
+            - `description`: String
+        - `subcategory`: Array of subcategory objects
+            - `id`: String
+            - `name`: String
+            - `description`: String
 ---
 ## Contributors
 - [Fady Alaa](https://www.linkedin.com/in/fady-alaa/) - Software Engineer

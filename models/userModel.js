@@ -29,6 +29,12 @@ const userSchema = new Schema({
     type: String,
     default: 'user'
   }
+}, { toJSON: { virtuals: true }, toObject: { virtuals: true } });
+
+userSchema.virtual('reviews', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'user',
 });
 
 module.exports = mongoose.model('User', userSchema);

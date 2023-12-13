@@ -35,9 +35,7 @@ exports.getAll = (Model, populateOpt) => asyncHandler(async (req, res) => {
         doc.description.match(new RegExp(req.query.search, 'i')) ||
         doc.ingredients.some(ingredient => ingredient.match(new RegExp(req.query.search, 'i'))) ||
         doc.category.name.match(new RegExp(req.query.search, 'i')) ||
-        doc.category.description.match(new RegExp(req.query.search, 'i')) ||
-        doc.subcategory.name.match(new RegExp(req.query.search, 'i')) ||
-        doc.subcategory.description.match(new RegExp(req.query.search, 'i'))
+        doc.subcategory.name.match(new RegExp(req.query.search, 'i'))
       );
     });
   }

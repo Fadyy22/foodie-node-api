@@ -27,7 +27,7 @@ const reviewSchema = new Schema({
 });
 
 reviewSchema.pre(/^find/, function (next) {
-  this.populate({ path: 'user', select: 'name' });
+  this.populate({ path: 'user recipe', select: 'name' });
   next();
 });
 

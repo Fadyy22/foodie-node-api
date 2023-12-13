@@ -8,4 +8,4 @@ exports.addIdToParams = (req, res, next) => {
   next();
 };
 
-exports.getUser = factory.getOne(User);
+exports.getUser = factory.getOne(User, 'reviews');
