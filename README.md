@@ -307,11 +307,9 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `category`: Category object
             - `id`: String
             - `name`: String
-            - `description`: String
         - `subcategory`: Subcategory object
             - `id`: String
             - `name`: String
-            - `description`: String
 
 #### Get Recipe
 - **URL:** `/recipes/{id}`
@@ -333,16 +331,16 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `category`: Category object
             - `id`: String
             - `name`: String
-            - `description`: String
         - `subcategory`: Subcategory object
             - `id`: String
             - `name`: String
-            - `description`: String
         - `reviews`: Array of review objects
             - `id`: String
             - `title`: String
             - `rating`: Number
-            - `recipe`: String
+            - `recipe`: Recipe object
+                - `id`: String
+                - `name`: String
             - `user`: User object
                 - `id`: String
                 - `name`: String
@@ -376,8 +374,12 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `diet`: String
         - `ratingsAverage`: Number
         - `ratingsQuantity`: Number
-        - `category`: String
-        - `subcategory`: String
+        - `category`: Category object
+            - `id`: String
+            - `name`: String
+        - `subcategory`: Subcategory object
+            - `id`: String
+            - `name`: String
 
 #### Update Recipe
 - **URL:** `/recipes/{id}`
@@ -408,8 +410,12 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `diet`: String
         - `ratingsAverage`: Number
         - `ratingsQuantity`: Number
-        - `category`: String
-        - `subcategory`: String
+        - `category`: Category object
+            - `id`: String
+            - `name`: String
+        - `subcategory`: Subcategory object
+            - `id`: String
+            - `name`: String
 
 #### Delete Recipe
 - **URL:** `/recipes/{id}`
@@ -429,8 +435,12 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `diet`: String
         - `ratingsAverage`: Number
         - `ratingsQuantity`: Number
-        - `category`: String
-        - `subcategory`: String
+        - `category`: Category object
+            - `id`: String
+            - `name`: String
+        - `subcategory`: Subcategory object
+            - `id`: String
+            - `name`: String
 
 #### Get All Recipes of a Category
 - **URL:** `/categories/{id}/recipes`
@@ -449,8 +459,12 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `diet`: String
         - `ratingsAverage`: Number
         - `ratingsQuantity`: Number
-        - `category`: String
-        - `subcategory`: String
+        - `category`: Category object
+            - `id`: String
+            - `name`: String
+        - `subcategory`: Subcategory object
+            - `id`: String
+            - `name`: String
 
 #### Get All Recipes of a Subcategory
 - **URL:** `/subcategories/{id}/recipes`
@@ -469,8 +483,12 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
         - `diet`: String
         - `ratingsAverage`: Number
         - `ratingsQuantity`: Number
-        - `category`: String
-        - `subcategory`: String
+        - `category`: Category object
+            - `id`: String
+            - `name`: String
+        - `subcategory`: Subcategory object
+            - `id`: String
+            - `name`: String
 
 
 ### Collection Endpoints
