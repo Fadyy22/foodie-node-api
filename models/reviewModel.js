@@ -59,10 +59,16 @@ reviewSchema.statics.calcAvgRatings = async function (recipeId) {
 }
 
 reviewSchema.post('save', async function () {
+  if (typeof this.recipe === 'object') {
+    this.recipe = this.recipe._id;
+  }
   await this.constructor.calcAvgRatings(this.recipe);
 });
 
 reviewSchema.post('findOneAndDelete', async function (doc) {
+  if (typeof doc.recipe === 'object') {
+    doc.recipe = doc.recipe._id;
+  }
   await doc.constructor.calcAvgRatings(doc.recipe);
 });
 
