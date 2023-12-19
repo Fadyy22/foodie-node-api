@@ -47,17 +47,12 @@ exports.createRecipeValidator = [
   check('category')
     .isMongoId()
     .withMessage('Invalid category id format.')
-    .custom((categoryId, { req }) => {
+    .customSanitizer(categoryId => {
       return Category.findById(categoryId).
         then(category => {
           if (!category) {
             return Promise.reject(new Error('Category not found.'));
           }
-        })
-    })
-    .customSanitizer(categoryId => {
-      return Category.findById(categoryId).
-        then(category => {
           return {
             _id: categoryId,
             name: category.name
@@ -68,7 +63,7 @@ exports.createRecipeValidator = [
   check('subcategory')
     .isMongoId()
     .withMessage('Invalid subcategory id format.')
-    .custom((subCategoryId, { req }) => {
+    .customSanitizer((subCategoryId, { req }) => {
       return SubCategory.findById(subCategoryId).
         then(subcategory => {
           if (!subcategory) {
@@ -77,11 +72,6 @@ exports.createRecipeValidator = [
           if (subcategory.category.toString() !== req.body.category._id) {
             return Promise.reject(new Error('Subcategory does\'t exist in this category.'));
           }
-        })
-    })
-    .customSanitizer(subCategoryId => {
-      return SubCategory.findById(subCategoryId).
-        then(subcategory => {
           return {
             _id: subCategoryId,
             name: subcategory.name
@@ -121,17 +111,12 @@ exports.updateRecipeValidator = [
     .optional()
     .isMongoId()
     .withMessage('Invalid category id format.')
-    .custom(categoryId => {
+    .customSanitizer(categoryId => {
       return Category.findById(categoryId).
         then(category => {
           if (!category) {
             return Promise.reject(new Error('Category not found.'));
           }
-        })
-    })
-    .customSanitizer(categoryId => {
-      return Category.findById(categoryId).
-        then(category => {
           return {
             _id: categoryId,
             name: category.name
@@ -142,17 +127,15 @@ exports.updateRecipeValidator = [
     .optional()
     .isMongoId()
     .withMessage('Invalid subcategory id format.')
-    .custom(subCategoryId => {
+    .customSanitizer((subCategoryId, { req }) => {
       return SubCategory.findById(subCategoryId).
         then(subcategory => {
           if (!subcategory) {
             return Promise.reject(new Error('Subcategory not found.'));
           }
-        })
-    })
-    .customSanitizer(subCategoryId => {
-      return SubCategory.findById(subCategoryId).
-        then(subcategory => {
+          if (subcategory.category.toString() !== req.body.category._id) {
+            return Promise.reject(new Error('Subcategory does\'t exist in this category.'));
+          }
           return {
             _id: subCategoryId,
             name: subcategory.name
