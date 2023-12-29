@@ -67,4 +67,15 @@ recipeSchema.virtual('reviews', {
   foreignField: 'recipe'
 });
 
-module.exports = mongoose.model('Recipe', recipeSchema);
+recipeSchema.pre('findOneAndDelete', async function (doc) {
+  const Review = require('./reviewModel');
+  const recipe = await Recipe.findById(this.getQuery()._id).populate('reviews');
+  if (recipe.reviews && recipe.reviews.length > 0) {
+    const reviewIds = recipe.reviews.map(review => review._id);
+    await Review.deleteMany({ _id: { $in: reviewIds } });
+  }
+});
+
+const Recipe = mongoose.model('Recipe', recipeSchema);
+
+module.exports = Recipe;
