@@ -67,7 +67,7 @@ recipeSchema.virtual('reviews', {
   foreignField: 'recipe'
 });
 
-recipeSchema.pre('findOneAndDelete', async function (doc) {
+recipeSchema.pre('findOneAndDelete', async function () {
   const Review = require('./reviewModel');
   const recipe = await Recipe.findById(this.getQuery()._id).populate('reviews');
   if (recipe.reviews && recipe.reviews.length > 0) {
