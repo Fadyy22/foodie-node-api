@@ -61,9 +61,9 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 
 ### Installation
 1. Clone the repository
-```git clone https://github/Fadyy22/foodie_node_api.git```
+```git clone https://github/Fadyy22/foodie-node-api.git```
 2. Navigate to the project directory
-```cd foodie_node_api```
+```cd foodie-node-api```
 3. Install dependencies
 ```npm install```
 4. Create a config.env file in the root directory and add the following:
