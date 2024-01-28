@@ -233,6 +233,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/subcategories`
 - **Method:** `POST`
 - **Description:** Creates a new subcategory.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
 - **Request Body:**
     - `name`: String
     - `description`: String
@@ -249,6 +251,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/subcategories/{id}`
 - **Method:** `PUT`
 - **Description:** Updates a subcategory by id.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
 - **Request Body:**
     - `name`: String
     - `description`: String
@@ -265,6 +269,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/subcategories/{id}`
 - **Method:** `DELETE`
 - **Description:** Deletes a subcategory by id.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
 - **Response Body:**
     - `message`: String
     - `document`: Object
@@ -349,6 +355,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/recipes`
 - **Method:** `POST`
 - **Description:** Creates a new recipe.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
 - **Request Body:**
     - `name`: String
     - `description`: String
@@ -385,6 +393,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/recipes/{id}`
 - **Method:** `PUT`
 - **Description:** Updates a recipe by id.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
 - **Request Body:**
     - `name`: String
     - `description`: String
@@ -421,6 +431,8 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/recipes/{id}`
 - **Method:** `DELETE`
 - **Description:** Deletes a recipe by id.
+- **Request Headers:**
+    - `Authorization`: Bearer {jwt token}
 - **Response Body:**
     - `message`: String
     - `document`: Object
@@ -638,7 +650,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/reviews`
 - **Method:** `POST`
 - **Description:** Creates a new review.
-- **Headers:**
+- **Request Headers:**
     - `Authorization`: Bearer {jwt token}
 - **Request Body:**
     - `title`: String
@@ -658,7 +670,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/reviews/{id}`
 - **Method:** `PUT`
 - **Description:** Updates a review by id.
-- **Headers:**
+- **Request Headers:**
     - `Authorization`: Bearer {jwt token}
 - **Request Body:**
     - `title`: String
@@ -682,7 +694,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 - **URL:** `/reviews/{id}`
 - **Method:** `DELETE`
 - **Description:** Deletes a review by id.
-- **Headers:**
+- **Request Headers:**
     - `Authorization`: Bearer {jwt token}
 - **Response Body:**
     - `message`: String
