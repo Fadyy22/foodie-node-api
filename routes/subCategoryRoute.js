@@ -35,7 +35,7 @@ router
 router
   .route('/:id')
   .get(getSubCategoryValidator, getSubCategory)
-  .put(isAuth, allowedTo('admin'), uploadSubCategoryImage, updateSubCategoryValidator, updateSubCategory)
+  .patch(isAuth, allowedTo('admin'), uploadSubCategoryImage, updateSubCategoryValidator, updateSubCategory)
   .delete(isAuth, allowedTo('admin'), deleteSubCategoryValidator, deleteSubCategory);
 
 module.exports = router;

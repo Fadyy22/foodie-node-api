@@ -195,7 +195,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 #### Update Category
 
 - **URL:** `/categories/{id}`
-- **Method:** `PUT`
+- **Method:** `PATCH`
 - **Description:** Updates a category by id.
 - **Request Headers:**
   - `Authorization`: Bearer {jwt token}
@@ -272,7 +272,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 #### Update Subcategory
 
 - **URL:** `/subcategories/{id}`
-- **Method:** `PUT`
+- **Method:** `PATCH`
 - **Description:** Updates a subcategory by id.
 - **Request Body:**
   - `name`: String
@@ -413,7 +413,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 #### Update Recipe
 
 - **URL:** `/recipes/{id}`
-- **Method:** `PUT`
+- **Method:** `PATCH`
 - **Description:** Updates a recipe by id.
 - **Request Body:**
   - `name`: String
@@ -561,7 +561,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 #### Update Collection
 
 - **URL:** `/collections/{id}`
-- **Method:** `PUT`
+- **Method:** `PATCH`
 - **Description:** Updates a user's collection.
 - **Request Headers:**
   - `Authorization`: Bearer {jwt token}
@@ -599,7 +599,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 #### Add Recipe to Collection
 
 - **URL:** `/collections/{id}/recipes`
-- **Method:** `PUT`
+- **Method:** `PATCH`
 - **Description:** Adds a recipe to a user's collection.
 - **Request Headers:**
   - `Authorization`: Bearer {jwt token}
@@ -695,7 +695,7 @@ Foodie api is a RESTful API that allows users to create, read, update, and delet
 #### Update Review
 
 - **URL:** `/reviews/{id}`
-- **Method:** `PUT`
+- **Method:** `PATCH`
 - **Description:** Updates a review by id.
 - **Headers:**
   - `Authorization`: Bearer {jwt token}

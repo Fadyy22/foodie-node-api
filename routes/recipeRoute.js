@@ -31,13 +31,13 @@ router
   .route('/')
   .post(isAuth, allowedTo('admin'), uploadRecipeImage, createRecipeValidator, createRecipe)
   .get(createFilterObject, getRecipesValidator, getRecipes)
-  .put(isAuth, addRecipeToCollectionValidator, addRecipeToCollection)
+  .patch(isAuth, addRecipeToCollectionValidator, addRecipeToCollection)
   .delete(isAuth, deleteRecipeFromCollectionValidator, deleteRecipeFromCollection);
 
 router
   .route('/:id')
   .get(getRecipeValidator, getRecipe)
-  .put(isAuth, allowedTo('admin'), uploadRecipeImage, updateRecipeValidator, updateRecipe)
+  .patch(isAuth, allowedTo('admin'), uploadRecipeImage, updateRecipeValidator, updateRecipe)
   .delete(isAuth, allowedTo('admin'), deleteRecipeValidator, deleteRecipe);
 
 module.exports = router;

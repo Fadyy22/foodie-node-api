@@ -25,11 +25,11 @@ router
 
 router
   .route('/')
-  .post(isAuth, createCollectionValidator, createCollection)
+  .post(isAuth, createCollectionValidator, createCollection);
 
 router
   .route('/:id')
   .get(isAuth, getCollectionValidator, getCollection)
-  .put(isAuth, updateCollectionValidator, updateCollection)
-  .delete(isAuth, deleteCollectionValidator, deleteCollection)
+  .patch(isAuth, updateCollectionValidator, updateCollection)
+  .delete(isAuth, deleteCollectionValidator, deleteCollection);
 module.exports = router;

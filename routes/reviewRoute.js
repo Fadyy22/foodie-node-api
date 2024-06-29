@@ -30,7 +30,7 @@ router
 router
   .route('/:id')
   .get(getReviewValidator, getReview)
-  .put(isAuth, allowedTo('user'), updateReviewValidator, updateReview)
+  .patch(isAuth, allowedTo('user'), updateReviewValidator, updateReview)
   .delete(isAuth, allowedTo('admin', 'user'), deleteReviewValidator, deleteReview);
 
 module.exports = router;
